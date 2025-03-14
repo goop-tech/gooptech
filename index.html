@@ -10,141 +10,209 @@
 
         <style>
             body {
-                /* background-color: #effafa; */
-                background-color: #0e0e0e;
-                color: #e624af;
+                background-color: #000000;
+                color: #ff50ff;
 
-                font-family: 'grapesoda'; /* 'typecast' font is cool but only when the pixels line up perfectly :( */
-                font-size: 1em;
+                overflow-x: hidden;
 
-                /* text-align: center; */
+                /* background: center/cover url("cells2_render1_black3.png"); */
+                /* background: center/cover url("output_0000.png"); */
+
+                min-height: 100vh;
+
+                font-family: 'outfit';
             }
 
-            h1 {
-                color: #e624af;
-
-                font-family: 'glass';
-                font-size: 8em;
-                font-weight: bolder;
-                font-style: italic;
+            .blur {
+                backdrop-filter: blur(5px);
             }
 
-            img {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            a {
-                color: #e624af;
-                /* background-color: #e624af; */
-                /* color: #0e0e0e; */
-                /* font-weight: bold; */
-                /* font-style: italic; */
-                text-decoration: none;
-
-                /* display: inline-block; */
-                /* padding: 0 .5ch; */
-                /* border-radius: .2em; */
-            }
-            a:hover {
-                background-color: #effafa;
-                color: #e624af;
-            }
-            a::before { content: "["; }
-            a::after  { content: "]"; }
-
-            header {
-                text-align: center;
-                margin-bottom: 8em;
-            }
-
-            main {
+            .cbox {
                 display: flex;
-                flex-flow: row wrap;
-                flex: 0 0;
                 align-items: center;
                 justify-content: center;
-                gap: 2em;
             }
 
-            .profile {
-                border: .1em solid #e624af;
-                border-radius: .2em;
-                padding: 1em;
-                width: 42ch;
-                aspect-ratio: 4/3;
-
-                h2 {
-                    font-size: 2em;
-                    text-align: center;
-                }
-
-                ul {
-                    list-style-position: outside;
-                    list-style-type: '♥ ';
-                    margin-left: 2ch;
-                }
+            .hline {
+                position: absolute;
+                width: 100%;
+                /* border-bottom: .1em solid #00000033; */
+                border-bottom: .1px solid #ffff3f55;
             }
 
-            footer {
-                background-color: #e624af;
-                color: #0e0e0e;
+            .vline {
+                position: absolute;
+                height: 100%;
+                /* border-left: .1em solid #00000033; */
+                border-left: .1px solid #ffff3f55;
             }
 
-            nav {
-                text-align: center;
+            .panel {
+                position: absolute;
+                backdrop-filter: blur(3px);
+                /* border: .1em solid #00000055; */
+                z-index: -1; /* prevent backdrop filter from blurring hlines and vlines */
+            }
+
+            nav a {
+                display: block;
+                color: #ffffff;
+                /* background-color: #00000055; */
+                /* backdrop-filter: blur(10px); */
+                /* padding: 1em; */
+                text-decoration: none;
+                /* border: .1em solid transparent; */
+                background: #ff50ff;
+                width: fit-content;
+                white-space: pre;
+                font-family: 'tt-kp', monospace;
+                line-height: 1;
+            }
+            nav a:hover {
+                /* border-color: #ff50ff; */
+                /* text-decoration: underline; */
+                color: #ff50ff;
+                background: #ffffff;
+            }
+
+            article p {
+                margin: 1em 0;
+            }
+            article p span {
+                background: #2121ff;
             }
         </style>
     </head>
     <body>
-        <header>
-            <!-- <img src="render.png"> -->
-            <h1>
-                <span style="color: #ff50ff;">g</span><span style="color: #ffff3f;">o</span><span style="color: #7fffff;">o</span><span style="color: #f03c79;">p</span>
-                <span style="color: #7fff00;">t</span><span style="color: #2121ff;">e</span><span style="color: #ff50ff;">c</span><span style="color: #ffff3f;">h</span>
-                <span style="color: #7fffff;">!</span><span style="color: #f03c79;">!</span>
-            </h1>
+        <div style="
+        z-index: -1;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        /* background-color: red; */
+        background: center/cover url('output_0000.png');
+        ">
+            <div class="hline" style="top: 12.5%;"></div>
+            <div class="hline" style="top: 14.5%;"></div>
+            <div class="hline" style="top: 25%;"></div>
+            <div class="hline" style="top: 66%;"></div>
+            <div class="hline" style="top: 75%;"></div>
 
-            <!-- <p>░░░▒▒▒▓▓▓ internet collective thing ▓▓▓▒▒▒░░░</p> -->
-            <!-- <p><i>internet collective thing</i></p> -->
+            <div class="vline" style="left: 10%;"></div>
+            <div class="vline" style="left: 15%;"></div>
+            <div class="vline" style="left: 60%; height: 25%;"></div>
+            <div class="vline" style="left: 60%; top: 75%;"></div>
+            <div class="vline" style="left: 66%;"></div>
+            <div class="vline" style="left: 68%;"></div>
+            <div class="vline" style="left: 80%; top: 66%;"></div>
 
-            <!-- <a href="https://flwrstems.mooo.com/">flwrstems</a>
-            <a href="https://dawnvoid.neocities.com/">dawn</a> -->
+            <div class="panel" style="left: 10%; top: 25%; width: 5%; height: 75%; word-wrap: break-word; word-break: break-all; line-height: 1; font-family: 'tt-kp', monospace; color: #ffffff33;">
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+                powered by estrogen
+            </div>
+            <div class="panel" style="left: 66%; top: 66%; width: 14%; height: 9%;"></div>
+        </div>
 
-            <nav>
-                ░░░▒▒▒▓▓▓
-                <a href="index.html">about</a>
-                <a href="https://flwrstems.mooo.com">flwrstems</a>
-                <a href="https://dawnvoid.neocities.org/">dawn</a>
-                <a href="index.html">stuff</a>
-                ▓▓▓▒▒▒░░░
-            </nav>
-        </header>
+        <article style="
+            position: absolute;
+            right: 0;
+            padding: 1em;
+            max-width: 16ch;
+            text-align: right;
+        ">
+            <p>
+                <span>goop tech !! is an internet art collective.</span>
+            </p>
+            <p>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde aperiam ratione voluptatum est numquam, aut ab, voluptates illo libero consectetur ullam corporis officia. Sit, tempore nihil. Eum esse placeat blanditiis!</span>
+            </p>
+            <p>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores optio magni praesentium inventore illo molestias numquam possimus quia blanditiis eligendi rerum odio, ipsam voluptatibus deleniti fugiat placeat. Neque, magnam alias.</span>
+            </p>
+            <p>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro a minus ullam dignissimos reprehenderit, adipisci laborum dicta, nulla sint accusantium veniam vitae distinctio sit in. Suscipit nemo rem quis pariatur.</span>
+            </p>
+        </article>
 
-        <main>
-            <section class="profile">
-                <h2>flwrstems</h2>
-                <ul>
-                    <li>she/her</li>
-                    <li>hi! i like to longboard, make music, play videogames, and host software. i have an emotional attachment to my laptop, poppy. </li>
-                    <li><a href="https://flwrstems.mooo.com/">site</a></li>
-                </ul>
-            </section>
+        <h1 style="
+        position: fixed;
+        bottom: 0;
+        right: .2em;
+        min-width: max-content;
+        text-align: right;
+        font-size: max(12em, 15vw);
+        font-style: italic;
+        color: #ffffff55;
+        ">goop tech !!</h1>
 
-            <section class="profile">
-                <h2>dawn</h2>
-                <ul>
-                    <li>she/her</li>
-                    <li>haiii! i like cats and rain and tea</li>
-                    <li><a href="https://dawnvoid.neocities.org/">site</a></li>
-                </ul>
-            </section>
-        </main>
+        <footer style="
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        font-style: italic;
+        ">
+            <marquee>
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+                goop tech !!
+            </marquee>
+        </footer>
 
-        <!-- <footer>
-            (c) your'ue mom 2025 &mdash;
-            trans rights &lt;3
-        </footer> -->
+        <nav style="
+        position: fixed;
+        top: 2em;
+        right: 2em;
+        display: flex;
+        flex-flow: column wrap;
+        gap: 2em;
+        ">
+            <a href="index.html">drwxrwxr-x   6 user user 5175 Mar 13 23:47 /etc/index</a>
+            <a href="index.html">drwxrwxr-x   7 user user 4096 Mar 13 22:48 /etc/about</a>
+            <a href="index.html">drwxrwxr-x   2 user user  315 Mar 13 19:00 /home/flwrstems</a>
+            <a href="index.html">drwxrwxr-x   2 user user  304 Mar 13 19:00 /home/dawn</a>
+        </nav>
     </body>
 </html>
