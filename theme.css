@@ -36,3 +36,15 @@
     font-family: 'grapesoda';
     src: url('fonts/grapesoda/GrapeSoda.ttf') format('truetype');
 }
+
+/* grapesoda */
+@font-face {
+    font-family: 'outfit';
+    src: url('fonts/outfit/Outfit-VariableFont_wght.ttf') format('truetype');
+}
+
+/* grapesoda */
+@font-face {
+    font-family: 'tt-kp';
+    src: url('fonts/tt_kp/TT-KP-ME.TTF') format('truetype');
+}
