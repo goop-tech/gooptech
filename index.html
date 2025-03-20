@@ -81,6 +81,16 @@
             article p span {
                 background: #2121ff;
             }
+
+            /* see https://css-tricks.com/full-page-background-video-styles/ */
+            video {
+                object-fit: cover;
+                width: 100vw;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
         </style>
     </head>
     <body>
@@ -92,6 +102,10 @@
         /* background-color: red; */
         background: center/cover url('output_0000.png');
         ">
+            <video playsinline autoplay muted loop poster="render.png" id="myVideo">
+                <source src="render.mp4" type="video/mp4">
+            </video>
+
             <div class="hline" style="top: 12.5%;"></div>
             <div class="hline" style="top: 14.5%;"></div>
             <div class="hline" style="top: 25%;"></div>
