@@ -1,0 +1,38 @@
+/*
+@font-face {
+    font-family: 'fontnamegoeshere';
+    src: url('webfont.eot');
+    src: url('webfont.eot?#iefix')      format('embedded-opentype'),
+         url('webfont.woff')            format('woff'),
+         url('webfont.ttf')             format('truetype'),
+         url('webfont.svg#svgFontName') format('svg');
+}
+*/
+
+/* glass */
+@font-face {
+    font-family: 'glass';
+    src: url('fonts/glass/Glass.ttf') format('truetype');
+}
+
+/* typecast */
+@font-face {
+    font-family: 'typecast';
+    src: url('fonts/typecast/Typecast.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'typecast';
+    src: url('fonts/typecast/Typecast-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'typecast';
+    src: url('fonts/typecast/Typecast-Italic.ttf') format('truetype');
+    font-style: italic;
+}
+
+/* grapesoda */
+@font-face {
+    font-family: 'grapesoda';
+    src: url('fonts/grapesoda/GrapeSoda.ttf') format('truetype');
+}
