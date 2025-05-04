@@ -27,12 +27,25 @@
                 width: 100vw;
                 height: 100vh;
                 display: grid;
-                gap: 4em;
-                padding: 8em;
+                gap: 1em;
+                /* padding: 8em; */
+                padding: 10vw;
                 grid-template:
                     "gooptech gooptech a" 1fr
                     "b c d" 1fr
                     / 1fr 1fr 1fr;
+            }
+            @media only screen and (max-device-width : 640px) {
+                .windows {
+                    height: auto;
+                    min-height: 100vh;
+                    gap: 1em;
+                    padding: 1em;
+                    grid-template:
+                        "gooptech" max(25vh, 8em)
+                        "a" max(25vh, 8em)
+                        / 1fr;
+                }
             }
 
             .window {
