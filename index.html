@@ -11,7 +11,7 @@
         <style>
             body {
                 background-color: #000000;
-                color: #ff50ff;
+                color: #ffffff;
 
                 overflow-x: hidden;
 
@@ -20,76 +20,64 @@
 
                 min-height: 100vh;
 
-                font-family: 'outfit';
+                font-family: monospace;
             }
 
-            .blur {
-                backdrop-filter: blur(5px);
-            }
-
-            .cbox {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .hline {
-                position: absolute;
-                width: 100%;
-                /* border-bottom: .1em solid #00000033; */
-                border-bottom: .1px solid #ffff3f55;
-            }
-
-            .vline {
-                position: absolute;
-                height: 100%;
-                /* border-left: .1em solid #00000033; */
-                border-left: .1px solid #ffff3f55;
-            }
-
-            .panel {
-                position: absolute;
-                backdrop-filter: blur(3px);
-                /* border: .1em solid #00000055; */
-                z-index: -1; /* prevent backdrop filter from blurring hlines and vlines */
-            }
-
-            nav a {
-                display: block;
-                color: #ffffff;
-                /* background-color: #00000055; */
-                /* backdrop-filter: blur(10px); */
-                /* padding: 1em; */
-                text-decoration: none;
-                /* border: .1em solid transparent; */
-                background: #ff50ff;
-                width: fit-content;
-                white-space: pre;
-                font-family: 'tt-kp', monospace;
-                line-height: 1;
-            }
-            nav a:hover {
-                /* border-color: #ff50ff; */
-                /* text-decoration: underline; */
-                color: #ff50ff;
-                background: #ffffff;
-            }
-
-            article p {
-                margin: 1em 0;
-            }
-            article p span {
-                background: #2121ff;
-            }
-
-            /* see https://css-tricks.com/full-page-background-video-styles/ */
-            video {
-                object-fit: cover;
+            .windows {
                 width: 100vw;
                 height: 100vh;
-                position: fixed;
-                top: 0;
-                left: 0;
+                display: grid;
+                gap: 4em;
+                padding: 8em;
+                grid-template:
+                    "gooptech gooptech a" 1fr
+                    "b c d" 1fr
+                    / 1fr 1fr 1fr;
+            }
+
+            .window {
+                background-color: #ffffff20;
+                backdrop-filter: blur(5px);
+                /* border: 1px solid #ffffff50; */
+                border: 1px solid greenyellow;
+                /* border-radius: .4em; */
+                /* padding: .2em; */
+                overflow: scroll;
+            }
+
+            .window:has(.window-bar) {
+                /* padding-top: 2em; */
+            }
+            .window .window-bar {
+                /* background-color: #ffffff30; */
+                background-color: #adff2f30;
+                /* padding: .2em; */
+                text-align: center;
+            }
+            .window .window-bar::after {
+                content: '×';
+                display: block;
+                position: absolute;
+                right: .3em;
+                top: .2em;
+                width: 1.1em;
+                border: 1px solid #ffffff50;
+                background: #00000020;
+                line-height: 1;
+            }
+
+            .window .window-content {
+                margin: .2em;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+            a::before { content: '['; }
+            a::after  { content: ']'; }
+            a:hover {
+                text-decoration: underline;
             }
         </style>
     </head>
@@ -102,118 +90,140 @@
         /* background-color: red; */
         background: center/cover url('output_0000.png');
         ">
-            <video playsinline autoplay muted loop poster="output_0000.png" id="myVideo">
+            <!-- see https://css-tricks.com/full-page-background-video-styles/ -->
+            <video playsinline autoplay muted loop poster="output_0000.png" id="myVideo" style="
+            object-fit: cover;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            ">
                 <source src="render.mp4" type="video/mp4">
             </video>
-
-            <div class="hline" style="top: 12.5%;"></div>
-            <div class="hline" style="top: 14.5%;"></div>
-            <div class="hline" style="top: 25%;"></div>
-            <div class="hline" style="top: 66%;"></div>
-            <div class="hline" style="top: 75%;"></div>
-
-            <div class="vline" style="left: 10%;"></div>
-            <div class="vline" style="left: 15%;"></div>
-            <div class="vline" style="left: 60%; height: 25%;"></div>
-            <div class="vline" style="left: 60%; top: 75%;"></div>
-            <div class="vline" style="left: 66%;"></div>
-            <div class="vline" style="left: 68%;"></div>
-            <div class="vline" style="left: 80%; top: 66%;"></div>
-
-            <div class="panel" style="left: 10%; top: 25%; width: 5%; height: 75%; word-wrap: break-word; word-break: break-all; line-height: 1; font-family: 'tt-kp', monospace; color: #ffffff33;">
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-                powered by estrogen
-            </div>
-            <div class="panel" style="left: 66%; top: 66%; width: 14%; height: 9%;"></div>
         </div>
 
-        <article style="
-            position: absolute;
-            right: 0;
-            padding: 1em;
-            max-width: 16ch;
-            text-align: right;
-        ">
-            <p>
-                <span>goop tech !! is an internet art collective.</span>
-            </p>
-            <p>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde aperiam ratione voluptatum est numquam, aut ab, voluptates illo libero consectetur ullam corporis officia. Sit, tempore nihil. Eum esse placeat blanditiis!</span>
-            </p>
-            <p>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores optio magni praesentium inventore illo molestias numquam possimus quia blanditiis eligendi rerum odio, ipsam voluptatibus deleniti fugiat placeat. Neque, magnam alias.</span>
-            </p>
-            <p>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro a minus ullam dignissimos reprehenderit, adipisci laborum dicta, nulla sint accusantium veniam vitae distinctio sit in. Suscipit nemo rem quis pariatur.</span>
-            </p>
-        </article>
-
+        <!-- see https://web.archive.org/web/20250120033702/https://kry.pt/o/#%E7%BD%AA -->
         <h1 style="
-        position: fixed;
-        bottom: 0;
-        right: .2em;
-        min-width: max-content;
-        text-align: right;
-        font-size: max(12em, 15vw);
-        font-style: italic;
-        color: #ffffff55;
-        ">goop tech !!</h1>
-
-        <footer style="
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        font-style: italic;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1em;
+        /* font-weight: bold; */
+        display: none;
         ">
-            <marquee>
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-                goop tech !!
-            </marquee>
-        </footer>
+            <svg width="100%" height="100%" viewBox="0 0 500 25" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="
+            width: 100vw;
+            height: 100vh;
+            fill: #ffffff00;
+            stroke: #000000ff;
+            stroke-width: 1px;
+            ">
+                <text x="0" y="12" textLength="500" lengthAdjust="spacingAndGlyphs">GOOP</text>
+                <text x="0" y="24" textLength="500" lengthAdjust="spacingAndGlyphs">TECH</text>
+            </svg>
+        </h1>
+
+        <!-- ======= -->
+        <!-- WINDOWS -->
+        <!-- ======= -->
+        <div class="windows">
+            <!-- see https://web.archive.org/web/20250120033702/https://kry.pt/o/#%E7%BD%AA -->
+            <h1 class="window" style="
+            grid-area: gooptech;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1em;
+            line-height: 1;
+            letter-spacing: 0;
+            /* font-weight: bold; */
+            overflow: hidden;
+            ">
+                <svg width="100%" height="100%" viewBox="10 2 470 21" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="
+                width: 100%;
+                height: 100%;
+                fill: #ffffff00;
+                stroke: #ffffff20;
+                stroke-width: 1px;
+                ">
+                    <text x="0" y="12" textLength="500" lengthAdjust="spacingAndGlyphs">GOOP</text>
+                    <text x="0" y="24" textLength="500" lengthAdjust="spacingAndGlyphs">TECH</text>
+                </svg>
+            </h1>
+
+            <div class="window" style="
+            /* display: flex;
+            flex-flow: column nowrap; */
+            ">
+                <h2 class="window-bar">navigation</h2>
+                <div class="window-content" style="
+                height: calc(100% - 2em);
+                /* flex-grow: 1; */
+                /* outline: 1px solid greenyellow; */
+                overflow: scroll;
+                ">
+                    <nav style="
+                    display: grid;
+                    grid-template-columns: auto auto auto;
+                    grid-template-rows: auto auto auto auto auto auto auto auto;
+                    grid-auto-flow: column;
+                    align-content: space-between;
+                    /* justify-content: space-between; */
+                    justify-items: start;
+                    height: 100%;
+                    ">
+                        <a href="about.html">about</a>
+                        <a href="">media</a>
+                        <a href="">downloads</a>
+                        <div style="user-select: none;">+</div>
+                        <a href="https://dawnvoid.neocities.org/">dawn</a>
+                        <a href="https://flwrstems.mooo.com">flwrstems</a>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <!-- <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div>
+                        <div style="user-select: none;">+</div> -->
+                    </nav>
+                </div>
+            </div>
+
+            <div class="window">
+                <h2 class="window-bar">window</h2>
+                <div class="window-content">
+                    hiii
+                </div>
+            </div>
+            <div class="window">
+                <div class="window-content">
+                    <details>
+                        <summary>hiiii</summary>
+                        awawa
+                        awawwa
+                    </details>
+                </div>
+            </div>
+
+        </div>
 
         <nav style="
         position: fixed;
@@ -222,6 +232,7 @@
         display: flex;
         flex-flow: column wrap;
         gap: 2em;
+        display: none;
         ">
             <a href="index.html">drwxrwxr-x   6 user user 5175 Mar 13 23:47 /etc/index</a>
             <a href="about.html">drwxrwxr-x   7 user user 4096 Mar 13 22:48 /etc/about</a>
