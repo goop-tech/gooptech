@@ -27,30 +27,49 @@
                 width: 100vw;
                 height: 100vh;
                 display: grid;
-                gap: 4em;
-                padding: 8em;
+                gap: 1em;
+                /* padding: 8em; */
+                padding: 10vw;
                 grid-template:
                     "gooptech gooptech a" 1fr
                     "b c d" 1fr
                     / 1fr 1fr 1fr;
             }
+            @media only screen and (max-device-width : 640px) {
+                .windows {
+                    height: auto;
+                    min-height: 100vh;
+                    gap: 1em;
+                    padding: 1em;
+                    grid-template:
+                        "gooptech" max(25vh, 8em)
+                        "a" max(25vh, 8em)
+                        / 1fr;
+                }
+            }
 
             .window {
                 background-color: #ffffff20;
                 backdrop-filter: blur(5px);
-                /* border: 1px solid #ffffff50; */
-                border: 1px solid greenyellow;
+                border: 1px solid #ffffff50;
+                /* border: 1px solid greenyellow; */
                 /* border-radius: .4em; */
                 /* padding: .2em; */
                 overflow: scroll;
+            }
+            .window:hover {
+                border: 1px solid greenyellow;
+            }
+            .window:hover .window-bar {
+                background-color: #adff2f30;
             }
 
             .window:has(.window-bar) {
                 /* padding-top: 2em; */
             }
             .window .window-bar {
-                /* background-color: #ffffff30; */
-                background-color: #adff2f30;
+                background-color: #ffffff30;
+                /* background-color: #adff2f30; */
                 /* padding: .2em; */
                 text-align: center;
             }
@@ -62,12 +81,15 @@
                 top: .2em;
                 width: 1.1em;
                 border: 1px solid #ffffff50;
-                background: #00000020;
+                background-color: #00000020;
+                color: #ffffffb0;
+                aspect-ratio: 1 / 1;
                 line-height: 1;
             }
 
             .window .window-content {
                 margin: .2em;
+                color: #ffffffe0;
             }
 
             a {
@@ -135,6 +157,7 @@
             letter-spacing: 0;
             /* font-weight: bold; */
             overflow: hidden;
+            user-select: none;
             ">
                 <svg width="100%" height="100%" viewBox="10 2 470 21" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="
                 width: 100%;
@@ -207,12 +230,23 @@
                 </div>
             </div>
 
-            <div class="window">
-                <h2 class="window-bar">window</h2>
-                <div class="window-content">
-                    hiii
+            <div class="window" style="
+            display: grid;
+            grid-template-rows: auto 1fr;
+            ">
+                <h2 class="window-bar">motd</h2>
+                <div class="window-content" style="
+                /* outline: 1px solid greenyellow; */
+                overflow: scroll;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                ">
+                    peanut butter<br>down my gonk
                 </div>
             </div>
+
             <div class="window">
                 <div class="window-content">
                     <details>
@@ -223,6 +257,20 @@
                 </div>
             </div>
 
+            <div class="window" style="
+            display: grid;
+            grid-template-rows: auto 1fr;
+            ">
+                <h2 class="window-bar">motd</h2>
+                <div class="window-content" style="
+                /* outline: 1px solid greenyellow; */
+                overflow: scroll;
+                ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt vero culpa, harum quidem accusamus id excepturi cum reiciendis? Voluptas nam fugiat recusandae rem reprehenderit ullam pariatur perferendis ut incidunt consequatur.
+
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa perferendis officia doloribus optio incidunt aspernatur porro, dicta ducimus cumque illo architecto rem voluptatum. Sit sed perspiciatis harum alias eveniet suscipit.
+                </div>
+            </div>
         </div>
 
         <nav style="
