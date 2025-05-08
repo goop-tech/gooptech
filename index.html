@@ -20,7 +20,10 @@
 
                 min-height: 100vh;
 
-                font-family: monospace;
+                /* font-family: 'Noto Serif JP', monospace; */
+                /* font-family: 'Major Mono Display', monospace; */
+                /* font-family: 'Do Hyeon', monospace; */
+                font-family: noto-serif-jp, monospace;
             }
 
             .windows {
@@ -125,25 +128,6 @@
             </video>
         </div>
 
-        <!-- see https://web.archive.org/web/20250120033702/https://kry.pt/o/#%E7%BD%AA -->
-        <h1 style="
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 1em;
-        /* font-weight: bold; */
-        display: none;
-        ">
-            <svg width="100%" height="100%" viewBox="0 0 500 25" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="
-            width: 100vw;
-            height: 100vh;
-            fill: #ffffff00;
-            stroke: #000000ff;
-            stroke-width: 1px;
-            ">
-                <text x="0" y="12" textLength="500" lengthAdjust="spacingAndGlyphs">GOOP</text>
-                <text x="0" y="24" textLength="500" lengthAdjust="spacingAndGlyphs">TECH</text>
-            </svg>
-        </h1>
-
         <!-- ======= -->
         <!-- WINDOWS -->
         <!-- ======= -->
@@ -234,7 +218,7 @@
             display: grid;
             grid-template-rows: auto 1fr;
             ">
-                <h2 class="window-bar">motd</h2>
+                <h2 class="window-bar">message of the day !!</h2>
                 <div class="window-content" style="
                 /* outline: 1px solid greenyellow; */
                 overflow: scroll;
@@ -243,7 +227,7 @@
                 justify-content: center;
                 text-align: center;
                 ">
-                    peanut butter<br>down my gonk
+                    <div>&ldquo;peanut butter<br>down my gonk&rdquo; <em>(what)</em></div>
                 </div>
             </div>
 
@@ -455,26 +439,9 @@
                 /* outline: 1px solid greenyellow; */
                 overflow: scroll;
                 ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt vero culpa, harum quidem accusamus id excepturi cum reiciendis? Voluptas nam fugiat recusandae rem reprehenderit ullam pariatur perferendis ut incidunt consequatur.
-
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa perferendis officia doloribus optio incidunt aspernatur porro, dicta ducimus cumque illo architecto rem voluptatum. Sit sed perspiciatis harum alias eveniet suscipit.
+                    goop tech more like goon tech !!!!
                 </div>
             </div>
         </div>
-
-        <nav style="
-        position: fixed;
-        top: 2em;
-        right: 2em;
-        display: flex;
-        flex-flow: column wrap;
-        gap: 2em;
-        display: none;
-        ">
-            <a href="index.html">drwxrwxr-x   6 user user 5175 Mar 13 23:47 /etc/index</a>
-            <a href="about.html">drwxrwxr-x   7 user user 4096 Mar 13 22:48 /etc/about</a>
-            <a href="https://flwrstems.mooo.com">drwxrwxr-x   2 user user  315 Mar 13 19:00 /home/flwrstems</a>
-            <a href="https://dawnvoid.neocities.org/">drwxrwxr-x   2 user user  304 Mar 13 19:00 /home/dawn</a>
-        </nav>
     </body>
 </html>
