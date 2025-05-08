@@ -9,6 +9,10 @@
 }
 */
 
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap'); */
+
 /* glass */
 @font-face {
     font-family: 'glass';
@@ -47,4 +51,10 @@
 @font-face {
     font-family: 'tt-kp';
     src: url('fonts/tt_kp/TT-KP-ME.TTF') format('truetype');
+}
+
+/* grapesoda */
+@font-face {
+    font-family: 'noto-serif-jp';
+    src: url('fonts/noto_serif_jp/NotoSerifJP-VariableFont_wght.ttf') format('truetype');
 }
