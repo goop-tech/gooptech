@@ -43,7 +43,7 @@
                     height: auto;
                     min-height: 100vh;
                     gap: 1em;
-                    padding: 1em;
+                    padding: 1.5em;
                     grid-template:
                         "gooptech" max(25vh, 8em)
                         "a" max(25vh, 8em)
@@ -122,6 +122,29 @@
             .rightmessage {
                 align-self: end;
                 border-radius: 1em 1em 0 1em;
+            }
+
+            /* see https://stackoverflow.com/questions/44805695/is-it-possible-to-recreate-marquee-using-css-only */
+            /* see https://codepen.io/jamesbarnett/pen/kQebQO */
+            .marquee {
+                overflow: hidden;
+            }
+            .marquee div {
+                position: absolute;
+                overflow: hidden;
+                width: 200%;
+                animation: marquee 5s linear infinite;
+            }
+            .marquee:hover div {
+                animation-play-state: paused;
+            }
+            .marquee div span {
+                float: left;
+                width: 50%;
+            }
+            @keyframes marquee {
+                0% { left: 0; }
+                100% { left: -100%; }
             }
         </style>
     </head>
@@ -256,7 +279,7 @@
             display: grid;
             grid-template-rows: auto 1fr;
             ">
-                <h2 class="window-bar">chat</h2>
+                <h2 class="window-bar">LEAKED chat logs DO NOT READ!!!!!!!</h2>
                 <div class="window-content" style="
                 /* outline: 1px solid greenyellow; */
                 overflow: scroll;
@@ -464,13 +487,88 @@
             display: grid;
             grid-template-rows: auto 1fr;
             ">
-                <h2 class="window-bar">motd</h2>
+                <h2 class="window-bar">motd #2</h2>
                 <div class="window-content" style="
-                /* outline: 1px solid greenyellow; */
                 overflow: scroll;
+                display: flex;
+                flex-flow: column nowrap;
+                gap: 1em;
+                align-items: center;
+                justify-content: center;
                 ">
-                    goop tech more like goon tech !!!!
+                    <img style="
+                    width: 100%;
+                    height: 100%;
+                    " src="so computer 2.png">
+                <!-- <pre> ╱|、  meow
+(°､｡ 7
+|、 ~ヽ
+じしf_,)ノ</pre> -->
                 </div>
+            </div>
+        </div>
+
+        <!-- blips and technicals -->
+        <div style="
+        position: fixed;
+        top: 1em;
+        left: 1em;
+        width: 1em;
+        height: 2em;
+        border-left: 1px solid white;
+        border-top: 1px solid white;
+        "></div>
+        <div style="
+        position: fixed;
+        top: 1em;
+        right: 1em;
+        width: 1em;
+        height: 2em;
+        border-right: 1px solid white;
+        border-top: 1px solid white;
+        "></div>
+        <div style="
+        position: fixed;
+        bottom: 1em;
+        left: 1em;
+        width: 1em;
+        height: 2em;
+        border-left: 1px solid white;
+        border-bottom: 1px solid white;
+        "></div>
+        <div style="
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+        width: 1em;
+        height: 2em;
+        border-right: 1px solid white;
+        border-bottom: 1px solid white;
+        "></div>
+        <div class="marquee" style="
+        position: fixed;
+        top: 1em;
+        left: 1em;
+        right: 1em;
+        height: 2em;
+        background-color: #ffffff20;
+        ">
+            <div style="font-size: 1.25em;">
+                <span>⚠ GOOP WARNING ⚠</span>
+                <span>⚠ GOOP WARNING ⚠</span>
+            </div>
+        </div>
+        <div class="marquee" style="
+        position: fixed;
+        bottom: 1em;
+        left: 1em;
+        right: 1em;
+        height: 2em;
+        background-color: #ffffff20;
+        ">
+            <div style="font-size: 1.25em; animation-delay: -2.5s;">
+                <span>⚠ GLEEP GLORP ⚠</span>
+                <span>⚠ GLEEP GLORP ⚠</span>
             </div>
         </div>
     </body>
