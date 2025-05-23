@@ -1,16 +1,15 @@
 #!/bin/bash
 set -euo pipefail
 
-STATUS_FILE="/var/www/gooptech.nya.pub/status.html"
+STATUS_FILE="/var/www/gooptech.nya.pub/dewdropstatus.html"
 mkdir -p "$(dirname "$STATUS_FILE")"
 
-LOG_FILE="/home/flwrstems/frankiestatuserr.log"
+LOG_FILE="/home/flwrstems/dewdropstatus.log"
 mkdir -p "$(dirname "$LOG_FILE")"
 
 
-{
-    #echo -e '\e[0;31m' # red color
-    echo -e '\e[0;36m'
+{ 
+    echo -e '\e[0;36m' #cyan
     echo -e ' ┓      ┓      '
     echo -e '┏┫┏┓┓┏┏┏┫┏┓┏┓┏┓'
     echo -e '┗┻┗ ┗┻┛┗┻┛ ┗┛┣┛'
