@@ -1,30 +1,30 @@
 #!/bin/bash
 set -euo pipefail
 
-REMOTE_PATH="/var/www/gooptech.nya.pub/dewdropstatus.html"
+REMOTE_PATH="/var/www/gooptech.nya.pub/poppystatus.html"
 mkdir -p "$(dirname "$REMOTE_PATH")"
 
-REMOTE_LOG="/var/wwww/gooptech.nya.pub/dewdropstatus.log"
+REMOTE_LOG="/var/wwww/gooptech.nya.pub/poppystatus.log"
 mkdir -p "$(dirname "$REMOTE_LOG")"
 
-LOCAL_PATH="/home/flwrstems/gooptech/dewdropstatus.html"
+LOCAL_PATH="/home/flwrstems/gooptech/poppystatus.html"
 mkdir -p "$(dirname "$LOCAL_PATH")"
 
-LOCAL_LOG="/home/flwrstems/gooptech/dewdropstatus.log"
+LOCAL_LOG="/home/flwrstems/gooptech/poppystatus.log"
 mkdir -p "$(dirname "$LOCAL_LOG")"
 
 FRANKIE_USER="flwrstems"
 FRANKIE_HOST="173.88.84.88"
 
-
 { 
-    echo -e '\e[0;36m' #cyan
-    echo -e ' ┓      ┓      '
-    echo -e '┏┫┏┓┓┏┏┏┫┏┓┏┓┏┓'
-    echo -e '┗┻┗ ┗┻┛┗┻┛ ┗┛┣┛'
-    echo -e '             ┛ '
+    echo -e '\e[0;35m' #cyan
 
-    echo -e "\ndewdrop <3\nGenerated on: $(date)"
+echo -e '  _   _   _   _       '
+echo -e ' )_) (_) )_) )_) (_(  '
+echo -e '(       (   (      _) '
+
+
+    echo -e "\npoppy <3\nGenerated on: $(date)"
     echo -e '\e[0m' # reset
 
     echo -e '\n=== uname -a ==='
@@ -32,7 +32,7 @@ FRANKIE_HOST="173.88.84.88"
     echo -e '\n=== uptime ==='
     uptime
     echo -e '\n=== hyfetch ==='
-    hyfetch
+    unbuffer hyfetch
     echo -e '\n=== vmstat ==='
     vmstat
     echo -e '\n=== iostat -xz ld0 ==='
