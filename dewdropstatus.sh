@@ -4,13 +4,13 @@ set -euo pipefail
 REMOTE_PATH="/var/www/gooptech.nya.pub/dewdropstatus.html"
 mkdir -p "$(dirname "$REMOTE_PATH")"
 
-REMOTE_LOG="/home/flwrstems/dewdropstatus.log"
+REMOTE_LOG="/var/wwww/gooptech.nya.pub/dewdropstatus.log"
 mkdir -p "$(dirname "$REMOTE_LOG")"
 
-LOCAL_PATH="/home/flwrstems/dewdropstatus.html"
+LOCAL_PATH="/home/flwrstems/gooptech/dewdropstatus.html"
 mkdir -p "$(dirname "$LOCAL_PATH")"
 
-LOCAL_LOG="/home/flwrstems/dewdropstatus.log"
+LOCAL_LOG="/home/flwrstems/gooptech/dewdropstatus.log"
 mkdir -p "$(dirname "$LOCAL_LOG")"
 
 FRANKIE_USER="flwrstems"
