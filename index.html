@@ -38,7 +38,8 @@
                     "b c d" 1fr
                     / 1fr 1fr 1fr;
             }
-            @media only screen and (max-device-width : 640px) {
+            /* @media only screen and (max-device-width : 640px) { */
+            @media (max-width : 640px) {
                 .windows {
                     height: auto;
                     min-height: 100vh;
@@ -51,7 +52,8 @@
                 }
 
                 .window {
-                    max-height: calc(100vh - 3em);
+                    /* max-height: calc(100vh - 3em); */
+                    max-height: 66vh;
                 }
             }
 
@@ -97,6 +99,15 @@
             .window .window-content {
                 margin: .2em;
                 color: #ffffffe0;
+            }
+
+            .window .logo {
+                fill: #ffffff00;
+                stroke: #ffffff20;
+            }
+            .window:hover .logo {
+                fill: #adff2f30;
+                stroke: greenyellow;
             }
 
             a {
@@ -206,11 +217,11 @@
             overflow: hidden;
             user-select: none;
             ">
-                <svg width="100%" height="100%" viewBox="10 2 470 21" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="
+                <svg class="logo" width="100%" height="100%" viewBox="10 2 470 21" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="
                 width: 100%;
                 height: 100%;
-                fill: #ffffff00;
-                stroke: #ffffff20;
+                /* fill: #ffffff00;
+                stroke: #ffffff20; */
                 stroke-width: 1px;
                 ">
                     <text x="0" y="12" textLength="500" lengthAdjust="spacingAndGlyphs">GOOP</text>
