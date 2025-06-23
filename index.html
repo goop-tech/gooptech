@@ -295,7 +295,7 @@
 		    <h2 class="window-bar">me if i were a pixelated pony</h2>
                 <div class="window-content" style="
                 /* outline: 1px solid greenyellow; */
-                overflow: scroll;
+                overflow: hidden;
                 display: flex;
                 flex-flow: column nowrap;
                 gap: 1em;
@@ -303,7 +303,14 @@
                 justify-content: center;
                 text-align: center;
                 ">
-                    <div><q><img src="./media/pony4.png"></q></div>
+                    <div style="width: 100%; height: 100%;">
+                        
+                            <video autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;">
+                                <source src="media/agirl.webm" type="video/mp4">
+                            Your browser does not support the video tag.
+                            </video>
+                        
+                    </div>
                 </div>
             </div>
 
