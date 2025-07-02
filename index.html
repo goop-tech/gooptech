@@ -4,626 +4,130 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="reset.css">
-        <link rel="stylesheet" href="theme.css">
 
         <title>goop tech !!</title>
 
         <style>
+            /* use impact font, or other fallbacks if not installed.
+               put 2em of space between stuff/content and edges of site. */
             body {
-                background-color: #000000;
-                color: #ffffff;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
-                overflow-x: hidden;
-
-                /* background: center/cover url("cells2_render1_black3.png"); */
-                /* background: center/cover url("output_0000.png"); */
-
-                min-height: 100vh;
-
-                /* font-family: 'Noto Serif JP', monospace; */
-                /* font-family: 'Major Mono Display', monospace; */
-                /* font-family: 'Do Hyeon', monospace; */
-                font-family: noto-serif-jp, monospace;
+                padding: 2em;
             }
 
-            .windows {
-                width: 100vw;
-                height: 100vh;
-                display: grid;
-                gap: 1em;
-                /* padding: 8em; */
-                padding: 10vw;
-                grid-template:
-                    "gooptech gooptech a" 1fr
-                    "b c d" 1fr
-                    / 1fr 1fr 1fr;
-            }
-            /* @media only screen and (max-device-width : 640px) { */
-            @media (max-width : 640px) {
-                .windows {
-                    height: auto;
-                    min-height: 100vh;
-                    gap: 1em;
-                    padding: 1.5em;
-                    grid-template:
-                        "gooptech" max(25vh, 8em)
-                        "a" max(25vh, 8em)
-                        / 1fr;
-                }
-
-                .window {
-                    /* max-height: calc(100vh - 3em); */
-                    max-height: 66vh;
-                }
-            }
-
-            .window {
-                background-color: #ffffff20;
-                backdrop-filter: blur(5px);
-                border: 1px solid #ffffff50;
-                /* border: 1px solid greenyellow; */
-                /* border-radius: .4em; */
-                /* padding: .2em; */
-                overflow: scroll;
-            }
-            .window:hover {
-                border: 1px solid greenyellow;
-            }
-            .window:hover .window-bar {
-                background-color: #adff2f30;
-            }
-
-            .window:has(.window-bar) {
-                /* padding-top: 2em; */
-            }
-            .window .window-bar {
-                background-color: #ffffff30;
-                /* background-color: #adff2f30; */
-                /* padding: .2em; */
-                text-align: center;
-            }
-            .window .window-bar::after {
-                content: '×';
-                display: block;
-                position: absolute;
-                right: .3em;
-                top: .2em;
-                width: 1.1em;
-                border: 1px solid #ffffff50;
-                background-color: #00000020;
-                color: #ffffffb0;
-                aspect-ratio: 1 / 1;
-                line-height: 1;
-            }
-
-            .window .window-content {
-                margin: .2em;
-                color: #ffffffe0;
-            }
-
-            .window .logo {
-                fill: #ffffff00;
-                stroke: #ffffff20;
-            }
-            .window:hover .logo {
-                fill: #adff2f30;
-                stroke: greenyellow;
-            }
-
+            /* links inherit the text color instead of being blue/purple.
+               links turn green when hovered over. */
             a {
                 color: inherit;
-                text-decoration: none;
             }
-            a::before { content: '['; }
-            a::after  { content: ']'; }
             a:hover {
-                text-decoration: underline;
+                color: greenyellow;
             }
 
-            .message {
-                background-color: #ffffff30;
-                word-break: break-all;
-                max-width: 32ch;
-                margin: 1em;
+            /* make header big and don't allow text selection
+               (forces the cursor to be a pointer).
+               individual letters are spans so we can scale them on hover
+               (0.1s transition) */
+            h1 {
+                font-size: 8em;
+                user-select: none;
+            }
+            h1 span {
+                display: inline-block;
+                transition: transform 0.1s;
+            }
+            h1 span:hover {
+                /* background-color: greenyellow; */
+                transform: scaleY(2.1);
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            p {
+                /* font-family: serif; */
+            }
+
+            /* reset.css breaks lists, fix it */
+            ul, ol {
+                list-style-position: inside;
+            }
+
+            /* images should never be wider than their parents or taller than
+               the screen (+ 4em of padding).
+               also give them a top and bottom margin to space them out. */
+            img {
+                display: block;
+                max-width: 100%;
+                max-height: calc(100vh - 4em);
+                margin-top: 2em;
+                margin-bottom: 2em;
+            }
+
+            /* give tables and their cells a double border.
+               give cells 1em of padding and make them green when hovered.
+               make images inside tables smaller. */
+            table, th, td {
+                border: 3px double;
+            }
+            th, td {
                 padding: 1em;
             }
-            .window:hover .message {
-                background-color: #adff2f30;
+            th:hover, td:hover {
+                background-color: greenyellow;
             }
-            .leftmessage {
-                align-self: start;
-                border-radius: 1em 1em 1em 0;
-            }
-            .rightmessage {
-                align-self: end;
-                border-radius: 1em 1em 0 1em;
+            table img {
+                max-height: 25vh;
             }
 
-            /* see https://stackoverflow.com/questions/44805695/is-it-possible-to-recreate-marquee-using-css-only */
-            /* see https://codepen.io/jamesbarnett/pen/kQebQO */
-            .marquee {
-                overflow: hidden;
-            }
-            .marquee div {
-                position: absolute;
-                overflow: hidden;
-                width: 200%;
-                animation: marquee 5s linear infinite;
-            }
-            .marquee:hover div {
-                animation-play-state: paused;
-            }
-            .marquee div span {
-                float: left;
-                width: 50%;
-            }
-            @keyframes marquee {
-                0% { left: 0; }
-                100% { left: -100%; }
-            }
-
-            /* https://aleclownes.com/2017/02/01/crt-display.html */
-            .crt::before {
-                content: " ";
-                display: block;
-                position: fixed;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-                z-index: 2;
-                background-size: 100% 2px, 3px 100%;
-                pointer-events: none;
-            }
+            /* list elements with class 'done' have a green checkmark.
+               list elements with class 'wip' have a red cross. */
+            li.done { list-style-type: '✔'; }
+            li.done::marker { color: limegreen; }
+            li.wip { list-style-type: '✘'; }
+            li.wip::marker { color: red; }
         </style>
     </head>
+
     <body>
-        <div style="
-        z-index: -1;
-        width: 100%;
-        height: 100vh;
-        position: fixed;
-        /* background-color: red; */
-        background: center/cover url('output_0000.png');
-        ">
-            <!-- see https://css-tricks.com/full-page-background-video-styles/ -->
-            <video playsinline autoplay muted loop poster="output_0000.png" id="myVideo" style="
-            object-fit: cover;
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            ">
-                <source src="render.mp4" type="video/mp4">
-            </video>
-        </div>
+        <img style="float: left; height: 12em; margin-right: 2em;" src="kiby2.gif">
+        <h1><span>g</span><span>o</span><span>o</span><span>p</span> <span>t</span><span>e</span><span>c</span><span>h</span> <span>!</span><span>!</span></h1>
+        <p>aster | blossom | <a href="https://dawnvoid.neocities.org/">dawn</a> | dewdrop | <a href="https://flwrstems.mooo.com/">flwrstems</a> | frankie | poppy | sage | xenia</p>
 
-        <div class="crt"></div>
+        <div style="height: 4em;"></div> <!-- blank vertical spacer -->
 
-        <!-- ======= -->
-        <!-- WINDOWS -->
-        <!-- ======= -->
-        <div class="windows">
-            <!-- see https://web.archive.org/web/20250120033702/https://kry.pt/o/#%E7%BD%AA -->
-            <h1 class="window" style="
-            grid-area: gooptech;
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1em;
-            line-height: 1;
-            letter-spacing: 0;
-            /* font-weight: bold; */
-            overflow: hidden;
-            user-select: none;
-            ">
-                <svg class="logo" width="100%" height="100%" viewBox="10 2 470 21" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="
-                width: 100%;
-                height: 100%;
-                /* fill: #ffffff00;
-                stroke: #ffffff20; */
-                stroke-width: 1px;
-                ">
-                    <text x="0" y="12" textLength="500" lengthAdjust="spacingAndGlyphs">GOOP</text>
-                    <text x="0" y="24" textLength="500" lengthAdjust="spacingAndGlyphs">TECH</text>
-                </svg>
-            </h1>
+        <table>
+            <tr>
+                <td>goop chat</td>
+                <td>interactive 3d chatroom</td>
+                <td>
+                    <img src="Screenshot_2025-05-30_16-03-27.png">
+                    <ul>
+                        <li class="done">p2p multiplayer</li>
+                        <li class="wip">dedicated server</li>
+                        <li class="done">character selection</li>
+                        <li class="done">chat</li>
+                        <li class="done">emotes</li>
+                        <li class="wip">world</li>
+                        <li class="wip">authoritative server</li>
+                    </ul>
+                </td>
+            </tr>
 
-            <div class="window" style=""
-            /* display: flex;
-            flex-flow: column nowrap; */
-            ">
-                <h2 class="window-bar">navigation</h2>
-                <div class="window-content" style="
-                height: calc(100% - 2em);
-                /* flex-grow: 1; */
-                /* outline: 1px solid greenyellow; */
-                overflow: scroll;
-                ">
-                    <nav style="
-                    display: grid;
-                    grid-template-columns: auto auto auto;
-                    grid-template-rows: auto auto auto auto auto auto auto auto;
-                    grid-auto-flow: column;
-                    align-content: space-between;
-                    /* justify-content: space-between; */
-                    justify-items: start;
-                    height: 100%;
-                    ">
-                        <a href="about.html">about</a>
-                        <div style="user-select: none;"><del>[media]</del></div>
-                        <div style="user-select: none;"><del>[downloads]</del></div>
-                        <a href="https://flwrstems.mooo.com">flwrstems</a>
-                        <div style="user-select: none;"><del>[frankie]</del></div>
-                        <a href="https://dawnvoid.neocities.org/">dawn</a>
-                        <div style="user-select: none;"><del>[dewdrop]</del></div>
-                        <a href="https://bsky.app/profile/gooptech.bsky.social">bluesky</a>
-                        <a href="https://discord.gg/bNsf6FUjx2">discord</a>
-                        <a href="https://gooptech.atabook.org">guestbook</a>
-                        <a href="https://gooptech.straw.page">strawpage</a>
-                        <a href="https://gooptech.neocities.org">neocities</a>
-                        <a href="https://gooptech.nekoweb.org">nekoweb</a>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <!-- <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div>
-                        <div style="user-select: none;">+</div> -->
-                    </nav>
-                </div>
-            </div>
+            <tr>
+                <td>tooll3 demos</td>
+                <td>live audio-reactive visuals</td>
+                <td>wip</td>
+            </tr>
 
-            <div class="window" style="
-            display: grid;
-            grid-template-rows: auto 1fr;
-            ">
-		    <h2 class="window-bar">me if i were a pixelated pony</h2>
-                <div class="window-content" style="
-                /* outline: 1px solid greenyellow; */
-                overflow: hidden;
-                display: flex;
-                flex-flow: column nowrap;
-                gap: 1em;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                ">
-                    <div style="width: 100%; height: 100%;">
-                        
-                            <video autoplay loop muted style="width: 100%; height: 100%; object-fit: contain;">
-                                <source src="media/agirl.webm" type="video/mp4">
-                            Your browser does not support the video tag.
-                            </video>
-                        
-                    </div>
-                </div>
-            </div>
+            <tr>
+                <td>music</td>
+                <td>wip</td>
+                <td>wip</td>
+            </tr>
+        </table>
 
-            <div class="window" style="
-            display: grid;
-            grid-template-rows: auto 1fr;
-            ">
-                <h2 class="window-bar">minecraft server at gooptech.nya.pub:70 :3</h2>
-                <div class="window-content" style="
-                /* outline: 1px solid greenyellow; */
-                overflow: scroll;
-                display: flex;
-                flex-flow: column nowrap;
-                /* gap: 1em; */
-                ">
-                    <p class="message leftmessage">
-                        -----BEGIN PGP MESSAGE-----<br>
-
-                        hQGMA0QZx8YHHQQlAQwA0r/4hPKJxJlRq/iHHPxyb5mwJXhGfemqJ/VXYPukfMNk
-                        OnergtIHinoQIJzoa9e/UBnB0/yVDzW+QjEvHgu/VzIqVYCmkCTDodc6fNw0BvF3
-                        V9H8nAa1tpZEPDj8mQtGtCB1Q+V6TP0tHLowqXZjIzWMhsy7WkNPnHCUEK4brRx5
-                        HD4ZrSJupkAKd4urHCzLT3VCP6jBztqVIXNxVCT8Q28JECHuS95wSqMC44FIUYzu
-                        DLUjCL+nOO1xTy6DsNrYjBkXeHUr0clDsac+oPYQk7PL8UxuBMQpfQqtjWUvi8E5
-                        WArkfLDu8iBhNVABYQeBs8ZQdBjWRR0UoBvl/frJP69hupfnfjZM7w+wu9YuMHsm
-                        NIlBKYECT+pgrW1htdKYqDIWXejUAIjhFbjJJPzpNDIPK7pNn8thH/fXyVN52i/A
-                        1R//zLqfI4Xq2SNc+MDvvN5Edp4zJ7CLMqfDeHE3XlM5K20fmXmBhF4XHFtkab1f
-                        IWQ8+sNGIOP6d9BTcn5+0ukB/+68bCoHlRTG2ORghrXCtk6GcQvaKt0N84H4tRau
-                        9ArGLJpONGuAwMslAiKFbVyx7ePPhWxQX7LnRiXlKmiIuy7h3VBjEjy7YXsVoOEo
-                        +whYRQ+bugDyqwZbaQfdFR3Rb/UNQ0C9cCh7QGL+n4tlM70w7eKM9qpkJ/u/x83o
-                        /92PK2lxY5dc0tiHKrh0eSD0gkQ0KvrfrmpVjewmZMcmmQ6uDNMr56C4CkHWQwFT
-                        Kirr8f6nzTl6pVnl+PhhYuBJgKQ55EcF35rynFP4PF7qXxdmr0DOWlgIl7kSetsy
-                        +uhyAo2P4RAuwQyX5GDo/rkJJXRIs8rNbyz2MOZguGkeyELX2YA8Ti8sTKnLHB/g
-                        TpasnrmKAdzsn80dH3amOzMYEREAM9DhkZ+629K2h+M9INJhmY1C6f0AniiW68VV
-                        tQ6H743WAOkHrnQoU1yyaB1uXLHd3O7j7Im0wPjAcmVw1Qy34VbpkahkoiV88xwj
-                        mCfIDyPyVu+7k+wbdQDWHinHSrEHx26YoMBtlF12qfd0SeLTmlOFn5tSoOXoZOf4
-                        PbV8WHXziME/YsJeeVl+2UEPEv3faekeA16QgM2vt7ETvzcdo/RPa/hyrmvBxFG2
-                        aa4KyxD9gQo9HVmXIrpyFyJbFtSqnPc08+gnSltfT+w6LYg33SA3zRdl76ROukM+
-                        9Td4iWYN8+1jq71ZHO5bB3eNgG4OoFKFv0md309/WS3WSFIuCpfblhUsT6GKM7Wx
-                        6lYLN59JDWig
-                        =Suym<br>
-                        -----END PGP MESSAGE-----
-                    </p>
-                    <p class="message rightmessage">
-                        -----BEGIN PGP MESSAGE-----<br>
-
-                        hQGMA0mbLjNVF4bvAQv+N8a3ZUOO2mFPmxRu48MYPoBZ56C2RHQ/YokpclAPTE+k
-                        2lZPGwhQdFszCaJHpJ5L85LXmbfJVn1tTwXpqhtXE7wNiSHuSNChrsqyNfHQpY9C
-                        F/0lXq9R/rFzPe+bPTSBLgLjYXLeFPGvfsg6cmW1PcTeDUyxDKUzU43KWI/ijIIj
-                        buNcsNFSEXNpEfjnwhLaWQIC1i7cB+PkG4znCJAq61+EG2M5A5a7ma8+ZVyDyIC2
-                        mTLE789IuwVs9wXatXDQ6qT2gzLGFaoaSgSYDw/7ZuyjgIK1b4LjLeMqyXVyuBrz
-                        BzhHkt0qChVvdXdV4BIbtgbRMKjSok8Eeq8clj04L3iGmQx47Q/R0XfIJ5qukZKV
-                        QSSRgvzyMIp50BJytvfRDeEV+gp1nrUOITriWlOyT6KtG/jzVMr10oA0nvgEbanh
-                        drPk50ykBta7GrDBaEehdW4m4i/B7ggsnJhOKZHXo0xAEQUj7IOPHb/12AhOBCSx
-                        OtTO3rSIUncIAzxKXRLY0ukB4NWeqztzUoX9Ntfxc7Ox7qcHEZiAlf6gux52KLjC
-                        M4S5r+GPlWl5Z8ebDaigu6oqzjVXxfbFHdIh0oabsPiYa+FRpHuga860+Kn9nj7K
-                        +pL/yq++vBvkpYV80Ajv4bwe0SAFaB/mfi7eoMc3ErWSntNidNjYunBdpHEZyXqX
-                        4gFwquc706BH7klfRRfjv+lepLrpsFWXewWvkcFKPVRpsv/slyTK9Slky4J3bkzR
-                        TJ/rHtcU5cKEFvCZczp9yTJ0DLMVPF2smOMmbzZFH+d5HwqpVyKCt7J1oqhwdjyk
-                        qyFoXp9eH6YZy0MO5WPULoPyMAdEFnmyP2WvNb91piewEf7474zbF8QHF+bcUVYF
-                        pFe2bk1EapgsVRwG1mLLKPkmDe8WNK0I/55BQAXcXXc2F2LB9vAZUWl7cvUngH5K
-                        zKc5ve71EYq3yEubrS4lunNKYP/ciP3xDnooahpYDPR8lS5l1uRJVxBaN6AE2cvy
-                        R9+ZFoyow3zGxBB8TlMjcbEtyjGUyBcYqJoI94Xfzy4Yptk0atuWT5+EX6Cu2qum
-                        kNVOVkKOUAMF+zMD3F/2Gvk9e7NaUTpQtSTRjtTTTAllXPWIlwb7GJcTcSGxWSPO
-                        3Jj4sP3cGWy1762V+O1PX0zrGbvYcWI1Ds8SnBlxD7tj+kHpYeIA3LFsPRf0+NuG
-                        nEVLxNuYU3UiWYhtuuqHk3Raox+mv6GK5N/2zPE1pZx9BCRvQUxklVVOWxeqad2A
-                        YDCi6R5cO6bs27P01x+tcEXq+KplDNA=
-                        =wHee<br>
-                        -----END PGP MESSAGE-----
-                    </p>
-                    <p class="message leftmessage">
-                        -----BEGIN PGP MESSAGE-----<br>
-
-                        hQGMA0QZx8YHHQQlAQv+LJ61p2wD4Vxz/Yg2iGJCSmaINT/IChOWAprDh5rPcjVy
-                        Epcai+XJKO0iMJgX6XGP3GFei0YCFr9hW2gqwQiqFY4u52LdQj1Abwi8sFP9EEo3
-                        4tOYBfBpxkQfxB4oqQ7JBDYY8f5Of8XZY/aWg4HdAOtudmjITg53bF18bC1HBGjb
-                        sBg4HmDwu5uBGvWehLDFix885CC9zKT8x1+YvVsxGsFreCJS5rr/CDkTvTY0mpuZ
-                        gJOy4BQcPX70rInzNhRao0mceorlakZtL2OLgza/Mnsqd/tHhFoGj+vcg67AaYps
-                        8prNCWGgyKkUqOWM7mLecmafUedDtvSQRDi/4t/Z65CK1u8D8+Wq6s+3SLgc1xHv
-                        cUd/fuXE5WlsJKGi4/wExg28P8l/yqi+1vO2xlwteGRYoqipg5bhRmK6VNKoo9R3
-                        DgJIe7V3rmzc0M7nOCHxnLG0JnQCO2gp/eqOm2nM1OlCgscup6/ZWI8cNhuZGmlg
-                        3iMy7MYxc9YBR0WnS8iWhQGMA0mbLjNVF4bvAQv+IiSH7wcHdx5gdxmS9M4/9lKP
-                        KnO05JRmEGvN2zI9b9OYhmFwgpxJYHmxnCCkpu4PIMfrRW5VGeoGV97fjTcYkfXf
-                        iLZbvJpls2FoVRMN2bp237LmOdFgEWd5y8WxFAsQDmwxbuVIwj5Kin9YfUtRKwuQ
-                        sn6nSO3GEp6cmbwKhdl32rrD54mjkkFlKGDx4t01bAVYAIv4aJl/LcpxpTUO7thR
-                        H+Ed3I0WXXLRtr9kuN9WmYbgGGDB5GyoXwa78LwxU0mPfLLpsobIJaFB+i6p1h8P
-                        oeA71pujDDpJ6XmlUIgg/HuVpJPgIt6r5iLH80yvjingz/6jz7eXaRFPHfpzZQp3
-                        DWYMiJTzZwTt68uIyAywo0tyt1NNm4srKbyzof/nqanfvYImmGiQLPCMlUgTlmwp
-                        hLdF8ziM6aMiH8bPtwi1ww1krFPkCyJ5Md98QneYXAZ5hiz/g0AutynrtldYCOtK
-                        011sPqDrRRhD9bMPu3o8qyWKsNCJEfLot7F0Xkoj0ukBLgD7Do2eBtDAg0GSTDy7
-                        aO6FYILlBOHQzIfvH7t6FIIWnR5/PEoJe6WqMiNdXFNdyJFtX1xZfrR/rynhNTq7
-                        Uq/caD3+yumL9NiBWlmJoMaaMlZXoldpZKM8bSsr0ooPpOhOwOmO92HG6osE0szA
-                        +76DkbcrN+TZ3xhNl5eW5PkFEumPE5oeaTPdgUtfUmaoeCKbSasjuFW22rg5MVwe
-                        cEgSGHmytWqpNjgnppqs4tx+LAPYvOCgbQSWcGKIaqJwzJ6lHMRWIGgELpVJdAsv
-                        S2SkjFY5uinqTf9x8vb94NLEzgTpRYqipow7y8ncWUFBgOtKCeO/PWrMzpfCsFtd
-                        Jk2dIC/rZkEpaGlKeWU6GQAJfEa2ImhgmdBTAQa/om83PQsQdqbWanbTYlCKFSEI
-                        7Sa9EVTlRPL80vut6O2QRPD4g/M1CpeNexW4jjpBIm+/B8i1m/wh6dLgztTC6eGV
-                        lQFpe3qW3mmwQvu5yuKMRh8AK8h0kbthO2Ex47tGEXU0qcTjnjTPKi0LNEprIh/T
-                        +Odn1HyLy1XNLQe9UQdbcfKYxloq2nU0NQC4OG1795dFjrOizdAFgFgR6fdzCpP8
-                        VOlycqR7OrRkacQvV0YMwA4ljSqE+U+ZaFAE2Sl12D6NjuWLpqut1A+yvtrbW2ED
-                        p24Q4Cqm/mQSTmmfFxla1mplU0bnhy3Zwh4dLJsaMISFRbYN9EMmNUpiNIE5yVc+
-                        dKGtNtKy0P1bMY19bwJDdTfRcilmLFe5KgMr3mxgIQ7zf2h/kFnZQ3apCv8i0e7C
-                        srgBX7BX3Zg7Z2aLJh3qcqGb8qIN7QYVJ/Re
-                        =RPu4<br>
-                        -----END PGP MESSAGE-----
-
-                    </p>
-                    <p class="message rightmessage">
-                        -----BEGIN PGP MESSAGE-----<br>
-
-                        hQGMA0mbLjNVF4bvAQwAmj6qMy+1OdFjNKxIYRsIm1W76K1jaTdPExnH+5xLoJ/S
-                        14yZgz6WZmvu2i5irb/8V81mMHg3kAwUcNh1oR+UdYkcQFVHMlzht2bTET6k1FTn
-                        oCVJ1FhWRXV8G5VZVGSZzgNAwdMbX3ijNzwIhydNLAZbV1BuT3V0DMvHuswB2jgg
-                        IVRB4DkSuR0A+PTK1f+Wp9Lq7mTFWFhHh6N3Dr8TStKA4Jta+hmaFVVDCVwK7aE7
-                        Wcw4jTbNCsvg0v9eiXT0j/TpGtdIfPbHUORjX/KPC+xkkLbDs5G/yD3YF4LnyXJM
-                        ZWi5UDYV52dSQ9a3afKvcDrf2lUj4mC2Me6By9oUHnfxF3FYYKIAbA5SqpZ09Cmj
-                        a5eOV74/179viZAtMR/MV5bllTDu23JO+eE1RstnmAnVDYIM09CIsgEyFpHJdj2b
-                        +a1ukBmXUAlIgZ456zhehP9Gc2NXlNDyqky2WP7PGUVla3XT8uXIXh2KAF8p71YY
-                        WB5dLhsMBL1r+Qbu0d3e0ukB1c1WY2OZmJgyF3AZ+JbSa4UlQulDo8nm4rcfyARU
-                        gLv2g4+7kikavxcEQJN00FGXHsyRp1SEwxPnbzbH3kH4+G/cSD+eAa+tMjL9SrP4
-                        mV4dRrjcf3Nl/fg3D/yI2V95slcNFprJrPr+dUkySsB26MNXpaCg9algsFlEioy6
-                        RiEMTISr3TXs09fAYz0fOJM+NRSZWNNTSoJEEVXDz4QV/2quC1OVefFl4GiIYvBK
-                        5zl3ZggZhqMX5Ns12tIs3ZwQRGkO4+YfKEQymaSM7LrH4Ny8RF7hcp2w95GJx1nq
-                        BOFE3LRHRAX7EXFh+reNhnT+zxwZI6fhXmu7nGBJi40FF2PfNRsJ0wBRdo/LqOPE
-                        RLYvtNCaQAfyyvpMIfjVaaNMxPYmMWEXCKA3Zip1zNCQ6PN8U8XUjIsUwwZrROyK
-                        PIOH8g5L87S4gJk+uWjA3sRXp7aR99mNVAL2HY4C8ERFhME40WxKJ3ZmuzyoaR/K
-                        opeSldP0DAGIG+HJ3ZLiw8j5i0sys5phRZD+4wTBjzFUDewefsuBgk0QQYrkrW6X
-                        w50bV3i2yfP/p66gARPL72lLonHzO++XluVBaY6CcrXT1xKVE2ZX0vtIQ+VwC8ch
-                        wIGN2y+kCxM7ObeJW74P9rrAUIzKhBUE9clUFUycAQ+u6hHchGPnD//SgawTYy3j
-                        k1gXSA0IxUe8nSTKhumseBjBTlk/ljYUptGM5tw+Uz7PRmg0ui7cjVxRhCm5RZhP
-                        LTUfHxoipWA9syu8+szzli8dGGOqlUeDK2Iz03i45c9DeJPhGSy/tZB7
-                        =PW4t<br>
-                        -----END PGP MESSAGE-----
-                    </p>
-                    <!-- haiii hii hiii heyy hiiii :3 -->
-                    <!-- hey hai :3 <3 ily -->
-                    <p hidden>
-                        -----BEGIN PGP PRIVATE KEY BLOCK-----
-
-                        lQVYBGgdQXABDADh65oPJ93wm/rI9YNppiPTjyZgTzueE9twuXlvwClgC+pSYAlI
-                        dweEmh9CIdMKajkW7oTEtHRsWwLGbYrE6OV/jUYj4wdRO3S+oU4pgGhMwPDekFLG
-                        G63Uxsj7IHdroenPXsaL/kewNuzIRifpWdYvp4KsD7V8Z1hvUpisgBEdnCBGlhj6
-                        JU3UGkW9lJUKv60eU7SvdmpSbSC8JF4XjgA/pOxq5u48cdbge1c4w0TIIC6I/KfV
-                        7/P4K9lYrnEolS1w7uhfc4aUUEmSAXlDQg+Ey8+d+824nHfKZBZq5porJBNlc2lw
-                        gHC6zRc0XWBT0Kh2QwSeme1fIxm+y2pUTSk6nG9zsMtuBZaqtzY0XsZ0tlhxhrBK
-                        z1OKcYqKi4WKBzPWaHENHs/Tm5hw8g0JRmkR+4CvfVHlHeAO3Q756c5HAYN5qKDK
-                        0qyMxVSm9LX5Uf/5fADgk7IKhWMT6TO12+PPU0qxdaHMlj0kAFibgKrZEI9qb/3c
-                        tpPSuuGuR4/rrJcAEQEAAQAL/jqqnkqCPUl+j8zAqJv2R0ZoXXxUBvTBTlJC78x7
-                        t6LX5UT36GE3e63NAgH/25hQRjv0u2iDPdpnddyGVKtWmUYarxShn2RSTro0FCKF
-                        1E/eKI57JuuIA4eGCWnhH/HEzX0KrP9sjDwvvyQwx6t6pzqfwrigqa3A/n+GENx2
-                        szsfsGf0EU9gAYprOiIFZACzDqcZ8IlB9FEsQnxo60AtoVXlo3kNN99dZoHLtbYp
-                        SwK3DK6JAaJ2GcIfzOSRBBSYTAQGg0cA8NaZI0q9DtTP8ffB+f0Qh3KcQ6MPGqCm
-                        kK4+BhxTwQPRa2y4L0dyol7rTfgxiXyiu1z/me7VNJv+g2WWjpLZGQVfbtA1yapg
-                        glncIPiG7ErNz+Y/AaI15lmWHC469yszsE8TqTrNmklhQjU5vdKQgkN4+B6Lz1wr
-                        y5S27SEzqTZnPqOV7SdFIzXQ4JFmCDZe99GqEGNJoSvAxlEUlqB6GXOBTRYYpW35
-                        GFcCXYBjXfKLkZNZkE1nFNkBcQYA5Ypj1be+aXp9l6pYTMl6m4wqwCxpHzOCjCgy
-                        /LXbJRCtguV3UWvP0xrU1bs5AqfCj765XLlMl4EuwxCNorTer8bm3lSfJKmM/DOZ
-                        jMRu1t4Wr3NNrrL7psgP7m7WJJXR7zZQI8SbgyYyP7p58NjJyF6TC9ApV8meXrfe
-                        dyMst96NfCO6TFZ+L/szYQ+h3QSh4Tp4ps12cYjPlzVFMe9PKqTof19PQ6vTBl1W
-                        ksmXj0eTPG+xA9pXSJuvqmQoTBWRBgD79mE9m5+eq3/Cd6gyRpGfDXN/GkJSq28z
-                        1BXL14Jl5KQHEIYw0vrIGRbo9xIqoiZAicoOGwXap3oksisdU7yhWnYVKH01N+ct
-                        /1SZT1g8PA0Rz1IgnFBeAPPfDOt0FltFk9adRQ/goikyFaUd1dXDl9AouM+2LGSI
-                        n044UDxUrnWdt4brvyB9BFz9FcGYi0bKMv3vMO7/2zBIzHGqK59c+5X6cwPceQP+
-                        fOPVo1uFQJo98roSWjFRsCCLPAnma6cF/jiipqDbMMd07hxTP3nn2ezn//kti3SN
-                        5KTY9JxjOTnQ3IHnfzcKg8QZ9dYoaIhKRITJghC+Ya7Brv2UwSuE4bvgkozksBlg
-                        zvb907aK0EdAceyAJ3Sm9OhwY4KmipM3ultE9SrJ1kPbBtzafAtVvLHJQIPOKwhI
-                        OVdcLpGVPDXYX9vekbkeGQVpABewfGtGgtrDMdT5/xBWNrvRaS4SXmwmOvlYo2Mb
-                        c88pUEhVT6u3qXt0XrV88UN/CdiaCpRuF90ItA1kYXduLmdvb3B0ZWNoiQHUBBMB
-                        CgA+FiEE/Ej8ullc5Or1XO4JpyiO85283hEFAmgdQXACGwMFCQPB+pAFCwkIBwIG
-                        FQoJCAsCBBYCAwECHgECF4AACgkQpyiO85283hFScQwAwng0O0Y4N/u30fQVvLJ/
-                        /iIt+oNHgUHrmAaI8iVKr10kcrxkwDdeelvYYwDm4bts50fsJoIGWQCu0YzRoxPa
-                        fi2qdpd6dkSLHiAT321o1SMLHRrXoReltWkigjD+vMGx5YeZVk4Le3oIz+k0MTN2
-                        b2BNGjyt7uEFdk7bfywIY2Qc/9vEnMkXGPvyQGVZZjQ0khRI7LnOOGJooiUilfO2
-                        qk+Tus9hsi5/w5qF43fdaKlOKazNVEoVaFG3UQXSnTOmj5fRU4TNJ6+nmcfU9FVj
-                        q0LvSXxcMMUBtppogfgu3slzhV1oLtj8v8Ga/paiGS82upIuTKNbybzT52QMuujS
-                        lZ9RA+hXhyNKLArUoWKBCD4CKgvKuuW2dCNim7H28FXISefVZeBqjB1m6bF95lF1
-                        oxkZoaTMDs++k+1IfJhBI+SliLAEo7CR95plgTll6Nzpi2nVpqltfJvqMdYdjry3
-                        RnXrPaPYSGkJH24gXi8b2QRbBzhhEs5UOwXwaW5hBhsZnQVYBGgdQXABDADBO5TC
-                        3whOV8hEj9EV3s1vAFR8xwNsQVg5mgwUQ4jTb7rk+3tt+Xj7wWOYb/bMYUqBL+wz
-                        91g1mfWsiVdcEe2FoUNYeDOcuZbUxTlvlLCBz0j9WKodP3ZThekQkfNe1B6jin2+
-                        cvSN62zEqzOo9/OJDct/7jWp805a/B3evC70oCEEty/FQcxP4BwWMNX+36Z3Q+Gq
-                        S9iGBY4h7iCxUXyTV+H7v8SJqBdd6azPA9wBuVzYE5HgN2O1ochDMFsRMyKxgf+B
-                        1KuD1JcN7jAAc5Gjb5N7+rWnx1o9y5JN5MZyh53rsw520GPcYli5DpcbZELge3rQ
-                        kwTD/gwtQM5BM3ajEcupCTP70cQKG3E3e/9hlp9T99g8Wv94F8BSSa8Gc+Ma9vlD
-                        L4VggQSGEheBtJsLI/YTbBTBDJDRgXwDkqNsfMk8MjR/5yruiwTl1iWs6CAfrM4W
-                        dgjG0HzM19MTqli1J4vVyQqoycPFQYJnKgKcvHMFgDJ7WG6zYaT1k5HMUukAEQEA
-                        AQAL/jIN7YiXPq8QlSuRd49rQhr1Ym1aHhxeRuzQ5z0ei2R95lNng38m5vyMCXEU
-                        28DwmNyjHdQOR/bGlXmmsA8FA9qgPfI+XNxFxPkDx8+MHDbcC6O44oQmCtAy+X8V
-                        142ic/dYKh955riWmfvN/1lPNXI0tRjEC3mlMZBnC5PFeoJasoLmswSteS/dtVjY
-                        OK7Hn3b4ig3TjNiWus02Qpi8K4F9e+f7Mn2YIcltfRq4/LYjnpXIZ/rFTlpf+KDS
-                        91wauvd86TPmtFCEZJz+lZWU/CAY5uNRq6dnLadwEmhU7p4Ey3WAtr3F4rsCze8p
-                        1sPGCtx9wcSFMKcI95rXqaCWGFu5bv1exUjDnzFe4CnRRTy1BIHiOmoKcwcsqkGK
-                        G+tUeyKBMSr7cWS6BQIE/8rpA5xq8xLL4sHpZCX18zxhoZP2JCU+BMX/qDbymb6M
-                        aYNmTwk3yXjdE17SrbbirtkiQOTcUQK48QJuVa7JXYhEGl+JsbqnMSM0Kr+9IDiI
-                        y9KfqwYAxsvqrmZWJa7Mpu69a6rrukl1nrSJ+Okxgv87Cdig+m8Crl234JSySV0b
-                        MqhergTKL5dIWtJ3hfjuLs8iI37793LwXPOB7TrnyCQ9ZTjvScaEy/bW5QoooFWg
-                        T1b9As65rlXNtzcxRigsXVbIdOqMV++OBUi5Zc4ij6KCdbCZa/Dm6qI7S5bgomUC
-                        G1QXFr5oeksEzLiMr7ToRs3bryvMlXnbz28aRieNdlGY6SpBLAlcb8PBl18g5/Me
-                        g73n426fBgD41dBKqOg9itCd6j6PtVuqLQAxF/OtE2ts4M5rVRhT85QgAiHp7GWs
-                        Hru8Gfavi6FWdPNTIy19kkp5ainBjqzfkrjIZcnzQFOLpsJpaf1+GhyF9QMtPtz8
-                        ZDW8/OmXXfqQgbgGvU7+8teKTfgMlrAugp/1mqa8NiDg0wVumDt0Wt+fAGZSER5H
-                        QBiIn2LRIIzGLOYl9JUSPmnkdEwRUiUVKD/iXziO+k5MW5lGHonmUekq0Jz6Pe6i
-                        xXPZWUf9uXcF/3Yv0TV3wnHPeY4atdLWqDo7TU4FPQPg4uZ/+BXKlqlpVW7pxU6E
-                        tZpsI2kjyBZqs5nRZjB3HUSinPX0kvKurm3/sbV8/2PKCWE8P5Owe7xI8HDHelbq
-                        zHFC+jn6MvSjnw21KMr1zLEsB+j22TzONYG1E/L6dpMidecNwgVdJoBqokpz5Yht
-                        Oe7xc3exk9ZiLZDqFZSsjw0X2aGuU6BocmZHxJbCjZx6OSD1n0qt2uTRv7JMMFan
-                        ETuEn2+5smSKfvb7iQG8BBgBCgAmFiEE/Ej8ullc5Or1XO4JpyiO85283hEFAmgd
-                        QXACGwwFCQPB+pAACgkQpyiO85283hHP8AwA3CPF3dnXb5acW0hnaf4OlBVSE1ji
-                        YOJoXrDLsrrGUhFSbMVoUZWzkzPKBZStU4lme/2hxe4XBAkCGs/5g0MZMktiJVl+
-                        Sh11IHRVaA0FTh9XbX4fBjL2qOXflPubz+HWDD6uCYKdzYyoI3HpM0eIsRbD0qe7
-                        1f5DfMfyH/htsxXlF4yGk5gX2v9coAdnh86K0Ip53hDyh3RrhkgjAI6VTkYepKVV
-                        HBvo7bCnNufT9Gn4wVgNrk5TCrqBZ2tR1xQE+1h5SAFcn09kXuU0W4hSKdWZW3JO
-                        W/2Ty1GOM1Fi6bR6Zg37RO/rDUWoERkDJaMNoIbvPPOkzPFBqR/HYMe/xgQhs/h4
-                        GgoA9EMT7PmII7dt151u8V+ptqyFVnoG9Ujq+g5kjeFwK/ZEL6+U/vj9QHfPRoqy
-                        u1QNgFzObscuvXKj0stvI0117SmNYb62M3+Zmpjbe1D3SZTHt6LvdI0OaA1na9Uu
-                        XyMCOROm0lxYpg3WS/yat4GmPrIGIb0/lyd+
-                        =4Pow
-                        -----END PGP PRIVATE KEY BLOCK-----
-                    </p>
-                </div>
-            </div>
-
-            <div class="window" style="
-            display: grid;
-            grid-template-rows: auto 1fr;
-            ">
-                <h2 class="window-bar"><marquee>frankie says! give me cat pics please i'm dying i need cat pics my doctor ordered me cat pics but the pharmacy is full of puppygirls they won't give me any HELP !!!!!!!!!!</marquee></h2>
-                <div class="window-content" style="
-                overflow: scroll;
-                display: flex;
-                flex-flow: column nowrap;
-                gap: 1em;
-                align-items: center;
-                justify-content: center;
-                ">
-                    <img style="
-                    width: 100%;
-                    height: 100%;
-                    " src="media/frankie.gif">
-                <!-- <pre> ╱|、  meow
-(°､｡ 7
-|、 ~ヽ
-じしf_,)ノ</pre> -->
-                </div>
-            </div>
-        </div>
-
-        <!-- blips and technicals -->
-        <div style="
-        position: fixed;
-        top: 1em;
-        left: 1em;
-        width: 1em;
-        height: 2em;
-        border-left: 1px solid yellow;
-        border-top: 1px solid yellow;
-        "></div>
-        <div style="
-        position: fixed;
-        top: 1em;
-        right: 1em;
-        width: 1em;
-        height: 2em;
-        border-right: 1px solid yellow;
-        border-top: 1px solid yellow;
-        "></div>
-        <div style="
-        position: fixed;
-        bottom: 1em;
-        left: 1em;
-        width: 1em;
-        height: 2em;
-        border-left: 1px solid yellow;
-        border-bottom: 1px solid yellow;
-        "></div>
-        <div style="
-        position: fixed;
-        bottom: 1em;
-        right: 1em;
-        width: 1em;
-        height: 2em;
-        border-right: 1px solid yellow;
-        border-bottom: 1px solid yellow;
-        "></div>
-        <div class="marquee" style="
-        position: fixed;
-        top: 1em;
-        left: 1em;
-        right: 1em;
-        height: 2em;
-        /* background-color: #ffffff20; */
-        background-color: #ffff0020;
-        color: yellow;
-        ">
-            <div style="font-size: 1.25em;">
-                <span>teflon for breakfast | who keeps shoving peanut butter down my gonk? </span>
-                <span>teflon for breakfast | who keeps shoving peanut butter down my gonk?</span>
-            </div>
-        </div>
-        <div class="marquee" style="
-        position: fixed;
-        bottom: 1em;
-        left: 1em;
-        right: 1em;
-        height: 2em;
-        /* background-color: #ffffff20; */
-        background-color: #ffff0020;
-        color: yellow;
-        ">
-            <div style="font-size: 1.25em; animation-delay: -2.5s;">
-                <span>gooptech !! is: aster | blossom | dawn | dewdrop | flwrstems | frankie | poppy | sage | xenia </span>
-                <span>gooptech !! is: aster | blossom | dawn | dewdrop | flwrstems | frankie | poppy | sage | xenia </span>
-            </div>
-        </div>
     </body>
 </html>
-
