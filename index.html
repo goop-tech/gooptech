@@ -8,6 +8,13 @@
         <title>goop tech !!</title>
 
         <style>
+            /* cursor styles.
+                allow petting anything with class `petme` (e.g. cat pics) */
+            * { cursor: url(cursor_default.png) 32 32, auto; }
+            a { cursor: url(cursor_pointer.png) 32 32, auto; }
+            .petme { cursor: url(cursor_pet.png) 32 32, auto; }
+            .petme:active { cursor: url(cursor_petting.png) 32 32, auto; }
+
             /* use impact font, or other fallbacks if not installed.
                put 2em of space between stuff/content and edges of site. */
             body {
@@ -169,13 +176,17 @@
     </head>
 
     <body>
+        <div class="headline">
+
+        </div>
+
         <header style="
         display: flex;
         flex-flow: row wrap;
         gap: 2em;
         ">
             <!-- <img style="height: 12em;" src="kiby2.gif"> -->
-            <img src="kiby2.gif">
+            <img class="petme" style="user-select: none;" src="kiby2.gif">
             <div>
                 <h1>
                     <span>g</span><span>o</span><span>o</span><span>p</span> <span>t</span><span>e</span><span>c</span><span>h</span> <span>!</span><span>!</span>
