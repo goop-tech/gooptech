@@ -26,7 +26,7 @@
 
                 padding: 2em;
 
-                background: url(background.png);
+                /* background: url(background.png); */
             }
 
             /* links inherit the text color instead of being blue/purple.
@@ -101,6 +101,7 @@
             header img {
                 image-rendering: pixelated;
                 max-height: 12em;
+                margin-top: 1em;
             }
 
             /* show a green background on hover. */
@@ -183,9 +184,26 @@
     </head>
 
     <body>
-        <div class="headline">
+        <!-- tiled background image -->
+        <div style="
+        background-image: url(background.png);
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        "></div>
 
-        </div>
+        <!-- https://www.fontspace.com/category/paint,splatter -->
+        <!-- <img style="
+        position: fixed;
+        right: 10%;
+        top: 50vh;
+        width: 80%;
+        height: auto;
+        image-rendering: pixelated;
+        transform: rotate(-45deg);
+        " src="spray.png"> -->
 
         <header style="
         display: flex;
