@@ -9,7 +9,8 @@
 
         <style>
             /* cursor styles.
-                allow petting anything with class `petme` (e.g. cat pics) */
+                allow petting anything with class `petme` (e.g. cat pics).
+                see https://stackoverflow.com/a/27086394 */
             * { cursor: url(cursor_default.png) 32 32, auto; }
             a { cursor: url(cursor_pointer.png) 32 32, auto; }
             .petme {
@@ -24,6 +25,8 @@
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
                 padding: 2em;
+
+                background: url(background.png);
             }
 
             /* links inherit the text color instead of being blue/purple.
@@ -81,7 +84,16 @@
                 transform: skew(-20deg, 0);
             }
 
+            header {
+                backdrop-filter: blur(5px);
+                filter: drop-shadow(1px 1px 3px gray);
+                width: fit-content;
+                padding-right: 4em;
+            }
             @media only screen and (max-device-width: 970px) {
+                header {
+                    padding: 0 1em;
+                }
                 header img {
                     flex-grow: 1;
                 }
@@ -120,28 +132,20 @@
                 font-size: 2em;
             }
 
-            p {
-                /* font-family: serif; */
-            }
-
             /* reset.css breaks lists, fix it */
             ul, ol {
                 list-style-position: inside;
             }
 
             /* images should never be wider than their parents or taller than
-               the screen (+ 4em of padding).
-               also give them a top and bottom margin to space them out. */
+               the screen (+ 4em of padding). */
             img {
                 display: block;
                 max-width: 100%;
                 max-height: calc(100vh - 4em);
-                margin-top: 2em;
-                margin-bottom: 2em;
             }
 
             /* give tables and their cells a double border.
-               give cells 1em of padding and make them green when hovered.
                make images inside tables smaller. */
             table, th, td {
                 border: 3px double;
@@ -152,7 +156,6 @@
             table img {
                 max-height: 25vh;
             }
-
             /*
             th:hover, td:hover {
                 position: relative;
@@ -189,8 +192,7 @@
         flex-flow: row wrap;
         gap: 2em;
         ">
-            <!-- <img style="height: 12em;" src="kiby2.gif"> -->
-            <img class="petme" src="kiby2.gif">
+            <img draggable="false" class="petme" src="kiby2.gif">
             <div>
                 <h1>
                     <span>g</span><span>o</span><span>o</span><span>p</span> <span>t</span><span>e</span><span>c</span><span>h</span> <span>!</span><span>!</span>
@@ -202,52 +204,70 @@
 
         <div style="height: 4em;"></div> <!-- blank vertical spacer -->
 
-        <table>
-            <tr>
-                <td>goop chat</td>
-                <td>interactive 3d chatroom</td>
-                <td>
-                    <img src="Screenshot_2025-05-30_16-03-27.png">
-                    <ul>
-                        <li class="done">p2p multiplayer</li>
-                        <li class="wip">dedicated server</li>
-                        <li class="done">character selection</li>
-                        <li class="done">chat</li>
-                        <li class="done">emotes</li>
-                        <li class="wip">world</li>
-                        <li class="wip">authoritative server</li>
-                    </ul>
-                </td>
-            </tr>
+        <!-- container to give table a proper margin -->
+        <div style="
+        padding: 1em;
+        backdrop-filter: blur(5px);
+        filter: drop-shadow(1px 1px 3px gray);
+        width: fit-content;
+        ">
+            <table>
+                <tr>
+                    <td>goop chat</td>
+                    <td>interactive 3d chatroom</td>
+                    <td>
+                        <!-- show images in a grid -->
+                        <div style="
+                        display: flex;
+                        flex-flow: row wrap;
+                        gap: 1em;
+                        margin-bottom: 1em;
+                        ">
+                            <img src="Screenshot_2025-07-03_16-27-31.png">
+                            <img src="Screenshot_2025-07-03_16-27-43.png">
+                            <img src="Screenshot_2025-07-03_16-27-52.png">
+                        </div>
+                        <ul>
+                            <li class="done">p2p multiplayer</li>
+                            <li class="wip">dedicated server (sorta works)</li>
+                            <li class="done">character selection</li>
+                            <li class="done">chat</li>
+                            <li class="done">emotes</li>
+                            <li class="wip">world</li>
+                            <li class="wip">authoritative server</li>
+                        </ul>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>tooll3 demos</td>
-                <td>live audio-reactive visuals</td>
-                <td>wip</td>
-            </tr>
+                <tr>
+                    <td>tooll3 demos</td>
+                    <td>live audio-reactive visuals</td>
+                    <td>wip</td>
+                </tr>
 
-            <tr>
-                <td>glitch art</td>
-                <td>databending, datamoshing, etc.</td>
-                <td>
-                    <p>todo: subpage</p>
-                    <p>resources:</p>
-                    <ul>
-                        <li><a href="https://blog.overwhale.com/">jwildfire</a></li>
-                        <li><a href="https://blog.overwhale.com/">structuresynth</a></li>
-                        <li><a href="https://imhex.werwolv.net/">imhex</a></li>
-                        <li><a href="https://www.offminor.de/">vooya</a></li>
-                        <li><a href="https://github.com/IENT/YUView">yuview</a></li>
-                    </ul>
-                </td>
-            </tr>
+                <tr>
+                    <td>glitch art</td>
+                    <td>databending, datamoshing, etc.</td>
+                    <td>
+                        <p>todo: subpage</p>
+                        <p>resources:</p>
+                        <ul>
+                            <li><a href="https://blog.overwhale.com/">jwildfire</a></li>
+                            <li><a href="https://blog.overwhale.com/">structuresynth</a></li>
+                            <li><a href="https://imhex.werwolv.net/">imhex</a></li>
+                            <li><a href="https://www.offminor.de/">vooya</a></li>
+                            <li><a href="https://github.com/IENT/YUView">yuview</a></li>
+                        </ul>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>music</td>
-                <td>wip</td>
-                <td>wip</td>
-            </tr>
-        </table>
+                <tr>
+                    <td>music</td>
+                    <td>wip</td>
+                    <td>wip</td>
+                </tr>
+            </table>
+        </div>
 
     </body>
 </html>
