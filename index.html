@@ -22,7 +22,20 @@
                 color: inherit;
             }
             a:hover {
-                color: greenyellow;
+                /* background-color: greenyellow; */
+                color: white;
+                position: relative;
+            }
+            a:hover::before {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                top: 0em;
+                left: -.5em;
+                bottom: 0;
+                right: -.5em;
+                background-color: greenyellow;
+                transform: skewX(-15deg) rotate(4deg);
             }
 
             /* make header big and don't allow text selection
@@ -30,6 +43,7 @@
                individual letters are spans so we can scale them on hover
                (0.1s transition) */
             h1 {
+                position: relative;
                 font-size: 8em;
                 user-select: none;
             }
@@ -40,6 +54,55 @@
             h1 span:hover {
                 /* background-color: greenyellow; */
                 transform: scaleY(2.1);
+            }
+            /* give header a green rectangle background on hover.
+               h1 has `position: relative` this pseudoelement child thing
+               can use `position: absolute` relative to the h1 itself rather
+               than the whole page. */
+            h1:hover::before {
+                position: absolute;
+                z-index: -1;
+                content: '';
+                left: -.2em;
+                right: -.15em;
+                top: .7em;
+                bottom: .3em;
+                background-color: greenyellow;
+                transform: skew(-20deg, 0);
+            }
+
+            @media only screen and (max-device-width: 970px) {
+                header img {
+                    flex-grow: 1;
+                }
+            }
+            header img {
+                image-rendering: pixelated;
+                max-height: 12em;
+            }
+
+            /* show a green background on hover. */
+            nav {
+                position: relative;
+                width: fit-content; /* as skinny as possible without causing line breaks */
+                padding: 1em; /* padding so hovering feels nicer */
+            }
+            nav:hover::before {
+                position: absolute;
+                z-index: -1;
+                content: '';
+                left: 0;
+                right: 0;
+                top: 1em;
+                bottom: 1em;
+                background-color: greenyellow;
+                transform: skew(40deg, 0) rotate(-2deg);
+            }
+            nav a:hover {
+                color: white;
+            }
+            nav a:hover::before {
+                display: none;
             }
 
             h2 {
@@ -75,12 +138,26 @@
             th, td {
                 padding: 1em;
             }
-            th:hover, td:hover {
-                background-color: greenyellow;
-            }
             table img {
                 max-height: 25vh;
             }
+
+            /*
+            th:hover, td:hover {
+                position: relative;
+            }
+            th:hover::before, td:hover::before {
+                position: absolute;
+                z-index: -1;
+                content: '';
+                left: -1em;
+                right: -1em;
+                top: 1em;
+                bottom: 1em;
+                background-color: greenyellow;
+                transform: skew(-1deg, 0) rotate(0deg);
+            }
+            */
 
             /* list elements with class 'done' have a green checkmark.
                list elements with class 'wip' have a red cross. */
@@ -92,9 +169,21 @@
     </head>
 
     <body>
-        <img style="float: left; height: 12em; margin-right: 2em;" src="kiby2.gif">
-        <h1><span>g</span><span>o</span><span>o</span><span>p</span> <span>t</span><span>e</span><span>c</span><span>h</span> <span>!</span><span>!</span></h1>
-        <p>aster | blossom | <a href="https://dawnvoid.neocities.org/">dawn</a> | dewdrop | <a href="https://flwrstems.mooo.com/">flwrstems</a> | frankie | poppy | sage | xenia</p>
+        <header style="
+        display: flex;
+        flex-flow: row wrap;
+        gap: 2em;
+        ">
+            <!-- <img style="height: 12em;" src="kiby2.gif"> -->
+            <img src="kiby2.gif">
+            <div>
+                <h1>
+                    <span>g</span><span>o</span><span>o</span><span>p</span> <span>t</span><span>e</span><span>c</span><span>h</span> <span>!</span><span>!</span>
+                    <div></div> <!-- green rectangle background -->
+                </h1>
+                <nav>aster | blossom | <a href="https://dawnvoid.neocities.org/">dawn</a> | <a href="dewdropstatus.html">dewdrop</a> | <a href="https://flwrstems.mooo.com/">flwrstems</a> | <a href="frankiestatus.html">frankie</a> | sage | xenia</nav>
+            </div>
+        </header>
 
         <div style="height: 4em;"></div> <!-- blank vertical spacer -->
 
@@ -120,6 +209,22 @@
                 <td>tooll3 demos</td>
                 <td>live audio-reactive visuals</td>
                 <td>wip</td>
+            </tr>
+
+            <tr>
+                <td>glitch art</td>
+                <td>databending, datamoshing, etc.</td>
+                <td>
+                    <p>todo: subpage</p>
+                    <p>resources:</p>
+                    <ul>
+                        <li><a href="https://blog.overwhale.com/">jwildfire</a></li>
+                        <li><a href="https://blog.overwhale.com/">structuresynth</a></li>
+                        <li><a href="https://imhex.werwolv.net/">imhex</a></li>
+                        <li><a href="https://www.offminor.de/">vooya</a></li>
+                        <li><a href="https://github.com/IENT/YUView">yuview</a></li>
+                    </ul>
+                </td>
             </tr>
 
             <tr>
