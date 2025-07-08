@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="theme.css">
+
+        <title>datamoshing</title>
+
+        <style>
+            body {
+                font-family: 'Libertinus Mono', serif;
+                padding: 2em;
+            }
+
+            details {
+                display: flex;
+                flex-flow: row wrap;
+                gap: 2em;
+            }
+            details summary {
+                position: sticky;
+                top: 0;
+                background-color: white;
+            }
+
+            details img, details video {
+                margin-bottom: 1em;
+            }
+
+            /* links inherit the text color instead of being blue/purple.
+               links turn green when hovered over. */
+            a {
+                color: inherit;
+            }
+            a:hover {
+                background-color: #46a2b7;
+                color: white;
+            }
+            /* a:hover {
+                color: white;
+                position: relative;
+            }
+            a:hover::before {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                top: 0em;
+                left: -.5em;
+                bottom: 0;
+                right: -.5em;
+                background-color: greenyellow;
+                transform: skewX(-15deg) rotate(4deg);
+            } */
+        </style>
+    </head>
+
+    <body>
+        <!--
+        <header style="
+        position: relative;
+        margin-bottom: 1em;
+        ">
+            <img style="
+            /* max-height: 50vh; */
+            max-height: 32em;
+            " src="datamosh/2025-04-16/P1010151.JPG.hexedited11.jpg.bmp.echo5.bmp.jpg.gimp5.jpg">
+
+            <h1 style="
+            font-size: 4em;
+            /* margin-top: -2em; */
+            color: white;
+            position: absolute;
+            left: .1em;
+            bottom: 0;
+            ">datamoshing</h1>
+        </header>
+        -->
+
+        <h1 style="
+        background-image: url(datamosh/2025-04-16/P1010151.JPG.hexedited11.jpg.bmp.echo5.bmp.jpg.gimp5.jpg);
+        background-position: top;
+        background-size: cover;
+        padding-top: 32rem;
+        margin-bottom: 1rem;
+        color: white;
+        font-size: 8em;
+        overflow-wrap: anywhere;
+        ">datamoshing</h1>
+
+        <details>
+            <summary>2025-03-27</summary>
+            <img src="datamosh/2025-03-27/cells2_render1_black3.raw2.bmp.png">
+            <img src="datamosh/2025-03-27/cells2_render1_black3.raw6.bmp.png">
+            <img src="datamosh/2025-03-27/mace.raw13.bmp.png">
+        </details>
+
+        <details>
+            <summary>2025-04-09</summary>
+            <video controls><source type="video/mp4" src="datamosh/2025-04-09/SUNP0053.AVI.yuv.clicktrack.yuv.mp4"></video>
+            <video controls><source type="video/mp4" src="datamosh/2025-04-09/SUNP0053.AVI.yuv.echo5.yuv.mp4"></video>
+            <video controls><source type="video/mp4" src="datamosh/2025-04-09/SUNP0053.AVI.yuv.idek.yuv.mp4"></video>
+            <video controls><source type="video/mp4" src="datamosh/2025-04-09/SUNP0053.AVI.yuv.mp4"></video>
+        </details>
+
+        <details>
+            <summary>2025-04-13</summary>
+            <img src="datamosh/2025-04-13/datamosh.png">
+            <img src="datamosh/2025-04-13/frame.png.gif">
+            <img src="datamosh/2025-04-13/Screenshot from 2025-04-13 14-25-42.png">
+            <img src="datamosh/2025-04-13/Screenshot from 2025-04-13 14-41-14.png">
+            <img src="datamosh/2025-04-13/Screenshot from 2025-04-13 14-41-56.png">
+            <img src="datamosh/2025-04-13/Screenshot from 2025-04-13 14-45-11.png">
+            <video controls><source type="video/mp4" src="datamosh/2025-04-13/SUNP0005.AVI.yuv.mp4"></video>
+            <video controls><source type="video/mp4" src="datamosh/2025-04-13/SUNP0005.AVI.yuv.yuv.mp4"></video>
+        </details>
+
+        <details>
+            <summary>resources</summary>
+            <ul>
+                <li><a href="https://blog.overwhale.com/">jwildfire</a></li>
+                <li><a href="https://blog.overwhale.com/">structuresynth</a></li>
+                <li><a href="https://imhex.werwolv.net/">imhex</a></li>
+                <li><a href="https://www.offminor.de/">vooya</a></li>
+                <li><a href="https://github.com/IENT/YUView">yuview</a></li>
+            </ul>
+        </details>
+    </body>
+</html>
