@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-STATUS_FILE="/var/www/gooptech.nya.pub/status.html"
+STATUS_FILE="/var/www/gooptech.nya.pub/frankiestatus.html"
 mkdir -p "$(dirname "$STATUS_FILE")"
 
 LOG_FILE="/home/flwrstems/frankiestatuserr.log"
