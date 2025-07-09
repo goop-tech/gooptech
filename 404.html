@@ -4,27 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="fonts.css">
         <link rel="stylesheet" href="theme.css">
 
         <title>404 not found</title>
-        <h2>404 not found</h2>
-        <h3>(oops)</h3>
-        <style>
-            /* cursor styles.
-                allow petting anything with class `petme` (e.g. cat pics).
-                see https://stackoverflow.com/a/27086394 */
-            * { cursor: url(media/cursor_default.png) 32 32, auto; }
-            a, details summary { cursor: url(media/cursor_pointer.png) 32 32, auto; }
-            .petme {
-                cursor: url(media/cursor_pet.png) 32 32, auto;
-                user-select: none;
-            }
-            .petme:active { cursor: url(media/cursor_petting.png) 32 32, auto; }
 
-            /* use impact font, or other fallbacks if not installed.
-               put 2em of space between stuff/content and edges of site. */
+        <style>
             body {
-                /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
                 font-family: 'Libertinus Mono', serif;
                 padding: 2em;
             }
@@ -34,159 +20,13 @@
                 }
             }
 
-            /* links inherit the text color instead of being blue/purple.
-               links turn green when hovered over. */
-            a {
-                color: inherit;
-            }
-            a:hover {
-                /* background-color: greenyellow; */
-                color: white;
-                position: relative;
-            }
-            a:hover::before {
-                content: '';
-                position: absolute;
-                z-index: -1;
-                top: 0em;
-                left: -.5em;
-                bottom: 0;
-                right: -.5em;
-                background-color: greenyellow;
-                transform: skewX(-15deg) rotate(4deg);
-            }
-
-            /* make header big and don't allow text selection
-               (forces the cursor to be a pointer).
-               individual letters are spans so we can scale them on hover
-               (0.1s transition) */
             h1 {
-                position: relative;
-                font-size: 8em;
-                user-select: none;
-            }
-            h1 span {
-                display: inline-block;
-                transition: transform 0.1s;
-            }
-            h1 span:hover {
-                /* background-color: greenyellow; */
-                transform: scaleY(2.1);
-            }
-            /* give header a green rectangle background on hover.
-               h1 has `position: relative` this pseudoelement child thing
-               can use `position: absolute` relative to the h1 itself rather
-               than the whole page. */
-            h1:hover::before {
-                position: absolute;
-                z-index: -1;
-                content: '';
-                left: -.2em;
-                right: -.15em;
-                top: .7em;
-                bottom: .3em;
-                background-color: greenyellow;
-                transform: skew(-20deg, 0);
-            }
-
-            header {
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                backdrop-filter: blur(5px);
-                /* filter: drop-shadow(1px 1px 3px gray); */
-                box-shadow: 1px 1px 3px gray;
-                width: fit-content;
-                padding-right: 4em;
-            }
-            @media only screen and (max-device-width: 970px) {
-                header {
-                    padding: 0 1em;
-                }
-                header img {
-                    flex-grow: 1;
-                }
-            }
-            header img {
-                image-rendering: pixelated;
-                max-height: 12em;
-                margin-top: 1em;
-            }
-
-            /* show a green background on hover. */
-            nav {
-                position: relative;
-                width: fit-content; /* as skinny as possible without causing line breaks */
-                padding: 1em 0em; /* padding so hovering feels nicer */
-                margin-left: 0.4em; /* visually align with first letter of header */
-            }
-            nav:hover::before {
-                position: absolute;
-                z-index: -1;
-                content: '';
-                left: 0;
-                right: 0;
-                top: 1em;
-                bottom: 1em;
-                background-color: greenyellow;
-                transform: skew(40deg, 0) rotate(-2deg);
-            }
-            nav a:hover {
-                color: white;
-            }
-            nav a:hover::before {
-                display: none;
-            }
-
-            h2 {
                 font-size: 2em;
             }
-
-            /* images should never be wider than their parents or taller than
-               the screen (+ 4em of padding). */
-            img {
-                display: block;
-                max-width: 100%;
-                max-height: calc(100vh - 4em);
-            }
-
-            /* give tables and their cells a double border.
-               make images inside tables smaller. */
-            table, th, td {
-                border: 3px double;
-            }
-            th, td {
-                padding: 1em;
-            }
-            table img {
-                max-height: 25vh;
-            }
-            /*
-            th:hover, td:hover {
-                position: relative;
-            }
-            th:hover::before, td:hover::before {
-                position: absolute;
-                z-index: -1;
-                content: '';
-                left: -1em;
-                right: -1em;
-                top: 1em;
-                bottom: 1em;
-                background-color: greenyellow;
-                transform: skew(-1deg, 0) rotate(0deg);
-            }
-            */
-
-            /* list elements with class 'done' have a green checkmark.
-               list elements with class 'wip' have a red cross. */
-            li.done { list-style-type: '✔'; }
-            li.done::marker { color: limegreen; }
-            li.wip { list-style-type: '✘'; }
-            li.wip::marker { color: red; }
         </style>
     </head>
 
     <body>
-        <!-- tiled background image -->
         <div style="
         background-image: url(media/mcdonalds.png);
         background-size: contain;
@@ -201,40 +41,14 @@
         z-index: -10;
         "></div>
 
-        <!-- https://www.fontspace.com/category/paint,splatter -->
-        <!-- <img style="
-        position: fixed;
-        right: 10%;
-        top: 50vh;
-        width: 80%;
-        height: auto;
-        image-rendering: pixelated;
-        transform: rotate(-45deg);
-        " src="media/spray.png"> -->
-
-        <style>
-            #messages {
-                position: fixed;
-                bottom: 1em;
-                right: 1em;
-                text-align: right;
-                max-width: calc(100% - 2em);
-                font-family: 'Libertinus Mono', serif;
-                color: #c2c2c2;
-                z-index: -9;
-            }
-            #messages p {
-                margin-top: 1em;
-            }
-        </style>
-        
+        <header>
+            <h1>404 not found</h1>
+            <p>(oops)</p>
+        </header>
 
         <div style="height: 2em;"></div> <!-- blank vertical spacer -->
 
-        <footer style="
-        /* background-color: white; */
-        /* box-shadow: 1px 1px 3px gray; */
-        ">
+        <footer>
             <div style="display: inline-block; vertical-align: middle;">
                 <a href="index.html">home</a><br>
                 <a href="tos.html">terms of service</a>

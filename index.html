@@ -4,22 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="fonts.css">
         <link rel="stylesheet" href="theme.css">
 
         <title>goop tech !!</title>
 
         <style>
-            /* cursor styles.
-                allow petting anything with class `petme` (e.g. cat pics).
-                see https://stackoverflow.com/a/27086394 */
-            * { cursor: url(media/cursor_default.png) 32 32, auto; }
-            a, details summary { cursor: url(media/cursor_pointer.png) 32 32, auto; }
-            .petme {
-                cursor: url(media/cursor_pet.png) 32 32, auto;
-                user-select: none;
-            }
-            .petme:active { cursor: url(media/cursor_petting.png) 32 32, auto; }
-
             /* use impact font, or other fallbacks if not installed.
                put 2em of space between stuff/content and edges of site. */
             body {
@@ -31,28 +21,6 @@
                 body {
                     font-size: .5em;
                 }
-            }
-
-            /* links inherit the text color instead of being blue/purple.
-               links turn green when hovered over. */
-            a {
-                color: inherit;
-            }
-            a:hover {
-                /* background-color: greenyellow; */
-                color: white;
-                position: relative;
-            }
-            a:hover::before {
-                content: '';
-                position: absolute;
-                z-index: -1;
-                top: 0em;
-                left: -.5em;
-                bottom: 0;
-                right: -.5em;
-                background-color: greenyellow;
-                transform: skewX(-15deg) rotate(4deg);
             }
 
             /* make header big and don't allow text selection
@@ -158,22 +126,6 @@
             table img {
                 max-height: 25vh;
             }
-            /*
-            th:hover, td:hover {
-                position: relative;
-            }
-            th:hover::before, td:hover::before {
-                position: absolute;
-                z-index: -1;
-                content: '';
-                left: -1em;
-                right: -1em;
-                top: 1em;
-                bottom: 1em;
-                background-color: greenyellow;
-                transform: skew(-1deg, 0) rotate(0deg);
-            }
-            */
 
             /* list elements with class 'done' have a green checkmark.
                list elements with class 'wip' have a red cross. */
@@ -360,10 +312,7 @@
 
         <div style="height: 2em;"></div> <!-- blank vertical spacer -->
 
-        <footer style="
-        /* background-color: white; */
-        /* box-shadow: 1px 1px 3px gray; */
-        ">
+        <footer>
             <a href="tos.html">terms of service</a>
             <a href="vi/index.html">v1</a>
         </footer>

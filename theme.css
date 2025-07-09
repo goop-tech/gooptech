@@ -1,8 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Libertinus+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.cdnfonts.com/css/impact');
+/* cursor styles.
+    allow petting anything with class `petme` (e.g. cat pics).
+    see https://stackoverflow.com/a/27086394 */
+* { cursor: url(media/cursor_default.png) 32 32, auto; }
+a, details summary { cursor: url(media/cursor_pointer.png) 32 32, auto; }
+.petme {
+    cursor: url(media/cursor_pet.png) 32 32, auto;
+    user-select: none;
+}
+.petme:active { cursor: url(media/cursor_petting.png) 32 32, auto; }
 
-/* reset.css breaks lists, fix it */
-ul, ol {
-    list-style-position: inside;
+/* links inherit the text color instead of being blue/purple.
+    links turn green when hovered over. */
+a {
+    color: inherit;
+}
+a:hover {
+    /* background-color: greenyellow; */
+    color: white;
+    position: relative;
+}
+a:hover::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0em;
+    left: -.5em;
+    bottom: 0;
+    right: -.5em;
+    background-color: greenyellow;
+    transform: skewX(-15deg) rotate(4deg);
 }

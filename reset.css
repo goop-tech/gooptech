@@ -55,3 +55,7 @@ details summary {
     cursor: pointer;
     user-select: none;
 }
+
+ul, ol {
+    list-style-position: inside;
+}
