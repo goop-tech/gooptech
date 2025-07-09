@@ -1,3 +1,3 @@
 #!/bin/bash
 
-unbuffer hyfetch > hyfetch.html
+unbuffer hyfetch | aha -n > hyfetch.html
