@@ -13,13 +13,13 @@
             /* cursor styles.
                 allow petting anything with class `petme` (e.g. cat pics).
                 see https://stackoverflow.com/a/27086394 */
-            * { cursor: url(cursor_default.png) 32 32, auto; }
-            a, details summary { cursor: url(cursor_pointer.png) 32 32, auto; }
+            * { cursor: url(media/cursor_default.png) 32 32, auto; }
+            a, details summary { cursor: url(media/cursor_pointer.png) 32 32, auto; }
             .petme {
-                cursor: url(cursor_pet.png) 32 32, auto;
+                cursor: url(media/cursor_pet.png) 32 32, auto;
                 user-select: none;
             }
-            .petme:active { cursor: url(cursor_petting.png) 32 32, auto; }
+            .petme:active { cursor: url(media/cursor_petting.png) 32 32, auto; }
 
             /* use impact font, or other fallbacks if not installed.
                put 2em of space between stuff/content and edges of site. */
@@ -188,7 +188,7 @@
     <body>
         <!-- tiled background image -->
         <div style="
-        background-image: url(mcdonalds.png);
+        background-image: url(media/mcdonalds.png);
         background-size: contain;
         background-repeat: no-repeat;
 
@@ -210,7 +210,7 @@
         height: auto;
         image-rendering: pixelated;
         transform: rotate(-45deg);
-        " src="spray.png"> -->
+        " src="media/spray.png"> -->
 
         <style>
             #messages {

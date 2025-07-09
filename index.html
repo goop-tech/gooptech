@@ -12,13 +12,13 @@
             /* cursor styles.
                 allow petting anything with class `petme` (e.g. cat pics).
                 see https://stackoverflow.com/a/27086394 */
-            * { cursor: url(cursor_default.png) 32 32, auto; }
-            a, details summary { cursor: url(cursor_pointer.png) 32 32, auto; }
+            * { cursor: url(media/cursor_default.png) 32 32, auto; }
+            a, details summary { cursor: url(media/cursor_pointer.png) 32 32, auto; }
             .petme {
-                cursor: url(cursor_pet.png) 32 32, auto;
+                cursor: url(media/cursor_pet.png) 32 32, auto;
                 user-select: none;
             }
-            .petme:active { cursor: url(cursor_petting.png) 32 32, auto; }
+            .petme:active { cursor: url(media/cursor_petting.png) 32 32, auto; }
 
             /* use impact font, or other fallbacks if not installed.
                put 2em of space between stuff/content and edges of site. */
@@ -187,7 +187,7 @@
     <body>
         <!-- tiled background image -->
         <div style="
-        background-image: url(background.png);
+        background-image: url(media/background.png);
         position: fixed;
         top: 0;
         left: 0;
@@ -205,7 +205,7 @@
         height: auto;
         image-rendering: pixelated;
         transform: rotate(-45deg);
-        " src="spray.png"> -->
+        " src="media/spray.png"> -->
 
         <style>
             #messages {
@@ -248,7 +248,7 @@
         flex-flow: row wrap;
         gap: 2em;
         ">
-            <img draggable="false" class="petme" src="kiby2.gif">
+            <img draggable="false" class="petme" src="media/kiby2.gif">
             <div>
                 <h1>
                     <span>g</span><span>o</span><span>o</span><span>p</span> <span>t</span><span>e</span><span>c</span><span>h</span> <span>!</span><span>!</span>
@@ -282,13 +282,13 @@
                         </style>
                         <details id="minecraftscreenshots">
                             <summary>screenshots</summary>
-                            <img src="2025-05-26_00.15.34.png">
-                            <img src="2025-05-27_17.57.40.png">
-                            <img src="2025-05-27_23.50.06.png">
-                            <img src="2025-05-28_19.02.58.png">
-                            <img src="2025-05-28_23.51.13.png">
-                            <img src="2025-05-29_12.14.32.png">
-                            <img src="2025-05-31_23.43.10.png">
+                            <img src="media/2025-05-26_00.15.34.png">
+                            <img src="media/2025-05-27_17.57.40.png">
+                            <img src="media/2025-05-27_23.50.06.png">
+                            <img src="media/2025-05-28_19.02.58.png">
+                            <img src="media/2025-05-28_23.51.13.png">
+                            <img src="media/2025-05-29_12.14.32.png">
+                            <img src="media/2025-05-31_23.43.10.png">
                         </details>
                     </td>
                 </tr>
@@ -304,9 +304,9 @@
                         gap: 1em;
                         margin-bottom: 1em;
                         ">
-                            <img src="Screenshot_2025-07-03_16-27-31.png">
-                            <img src="Screenshot_2025-07-03_16-27-43.png">
-                            <img src="Screenshot_2025-07-03_16-27-52.png">
+                            <img src="media/Screenshot_2025-07-03_16-27-31.png">
+                            <img src="media/Screenshot_2025-07-03_16-27-43.png">
+                            <img src="media/Screenshot_2025-07-03_16-27-52.png">
                         </div>
                         <ul>
                             <li class="done">p2p multiplayer</li>
