@@ -30,3 +30,10 @@ a:hover::before {
     background-color: greenyellow;
     transform: skewX(-15deg) rotate(4deg);
 }
+
+h1 {
+    /* ...existing code... */
+    text-shadow:
+        3px 0 0 #ff00cc,   /* magenta right */
+        -3px 0 0 #00ffff  /* cyan left */
+}
