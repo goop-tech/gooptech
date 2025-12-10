@@ -48,7 +48,6 @@ table {
 img, video {
     display: block;
     max-width: 100%;
-    height: 100%;
 }
 
 details summary {
