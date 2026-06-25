@@ -28,7 +28,7 @@ FRANKIE_HOST="173.88.84.88"
     echo -e '\n=== uptime ==='
     uptime
     echo -e '\n=== hyfetch ==='
-    hyfetch
+    unbuffer hyfetch
     echo -e '\n=== vmstat ==='
     vmstat
     echo -e '\n=== iostat -xz ld0 ==='

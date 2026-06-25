@@ -1,60 +1,39 @@
-/*
-@font-face {
-    font-family: 'fontnamegoeshere';
-    src: url('webfont.eot');
-    src: url('webfont.eot?#iefix')      format('embedded-opentype'),
-         url('webfont.woff')            format('woff'),
-         url('webfont.ttf')             format('truetype'),
-         url('webfont.svg#svgFontName') format('svg');
+/* cursor styles.
+    allow petting anything with class `petme` (e.g. cat pics).
+    see https://stackoverflow.com/a/27086394 */
+* { cursor: url(media/cursor_default.png) 32 32, auto; }
+a, details summary { cursor: url(media/cursor_pointer.png) 32 32, auto; }
+.petme {
+    cursor: url(media/cursor_pet.png) 32 32, auto;
+    user-select: none;
 }
-*/
+.petme:active { cursor: url(media/cursor_petting.png) 32 32, auto; }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap'); */
-
-/* glass */
-@font-face {
-    font-family: 'glass';
-    src: url('fonts/glass/Glass.ttf') format('truetype');
+/* links inherit the text color instead of being blue/purple.
+    links turn green when hovered over. */
+a {
+    color: inherit;
 }
-
-/* typecast */
-@font-face {
-    font-family: 'typecast';
-    src: url('fonts/typecast/Typecast.ttf') format('truetype');
+a:hover {
+    /* background-color: greenyellow; */
+    color: white;
+    position: relative;
 }
-@font-face {
-    font-family: 'typecast';
-    src: url('fonts/typecast/Typecast-Bold.ttf') format('truetype');
-    font-weight: bold;
-}
-@font-face {
-    font-family: 'typecast';
-    src: url('fonts/typecast/Typecast-Italic.ttf') format('truetype');
-    font-style: italic;
+a:hover::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0em;
+    left: -.5em;
+    bottom: 0;
+    right: -.5em;
+    background-color: greenyellow;
+    transform: skewX(-15deg) rotate(4deg);
 }
 
-/* grapesoda */
-@font-face {
-    font-family: 'grapesoda';
-    src: url('fonts/grapesoda/GrapeSoda.ttf') format('truetype');
-}
-
-/* grapesoda */
-@font-face {
-    font-family: 'outfit';
-    src: url('fonts/outfit/Outfit-VariableFont_wght.ttf') format('truetype');
-}
-
-/* grapesoda */
-@font-face {
-    font-family: 'tt-kp';
-    src: url('fonts/tt_kp/TT-KP-ME.TTF') format('truetype');
-}
-
-/* grapesoda */
-@font-face {
-    font-family: 'noto-serif-jp';
-    src: url('fonts/noto_serif_jp/NotoSerifJP-VariableFont_wght.ttf') format('truetype');
+h1 {
+    /* ...existing code... */
+    text-shadow:
+        3px 0 0 #ff00cc,   /* magenta right */
+        -3px 0 0 #00ffff  /* cyan left */
 }
