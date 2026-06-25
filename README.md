@@ -9,6 +9,8 @@ to join our community linux server, dewdrop, paste your public key and preferred
 the default website template is in the "public_html" directory. to make your website public, run "chmod 711 $HOME"
 "chmod 755 ~/public_html"
 
+you will be able to view your site at gooptech.nya.pub/~$USER
+
 https://lospec.com/palette-list/neo-5
 https://www.dafont.com/daydream-3.font?text=GOOP+TECH+!&back=bitmap
 https://lospec.com/palette-list/secam
